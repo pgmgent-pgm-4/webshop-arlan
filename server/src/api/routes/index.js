@@ -63,6 +63,11 @@ router.delete('/categories/:categoryId', categoryController.deleteCategory);
 router.get('/products', productController.getProducts);
 router.get('/products/:productId', productController.getProductById);
 
+router.get('/orders', orderController.getOrders);
+router.get('/orders/:orderId', orderController.getOrderById);
 router.post('/orders', orderController.createOrder);
+router.put('/orders/:orderId', orderController.updateOrder);
+router.delete('/orders/:orderId', orderController.deleteOrder);
+
 
 export default router;

@@ -1,52 +1,41 @@
 import { convertArrayToPagedObject, handleHTTPError, HTTPError } from '../../utils';
 import database from '../../database';
 
-// /*
-// Get all categories
-// */
-// const getCategories = async (req, res, next) => {
-// 	try {
-// 		// Get query parameters
-// 		const { itemsPerPage, currentPage } = req.query;
+/*
+Get all categories
+*/
+const getOrders = async (req, res, next) => {
+	try {
+		// Get all orders from database
+		let orders = await database.Order.findAll();
 
-// 		// Get categories from database
-// 		let categories = null;
-// 		if (itemsPerPage && currentPage) {
-// 			categories = await database.Category.findAll({
-// 				offset: (currentPage - 1) * itemsPerPage,
-// 				limit: itemsPerPage,
-// 			});
-// 			categories = convertArrayToPagedObject(categories, itemsPerPage, currentPage, await database.Category.count());
-// 		} else {
-// 			categories = await database.Category.findAll();
-// 		}
+		// Send response
+		res.status(200).json(orders);
+	} catch (error) {
+		handleHTTPError(error, next);
+	}
+};
 
-// 		// Send response
-// 		res.status(200).json(categories);
-// 	} catch (error) {
-// 		handleHTTPError(error, next);
-// 	}
-// };
+/*
+Get a specific order
+*/
+const getOrderById = async (req, res, next) => {
+	try {
+		// Get orderId parameter
+		const { orderId } = req.params;
+		// Get specific category from database
+		const order = await database.Order.findByPk(orderId);
 
-// /*
-// Get a specific category
-// */
-// const getCategoryById = async (req, res, next) => {
-// 	try {
-// 		// Get categoryId parameter
-// 		const { categoryId } = req.params;
-// 		// Get specific category from database
-// 		const category = await database.Category.findByPk(categoryId);
-
-// 		if (category === null) {
-// 			throw new HTTPError(`Could not found the category with id ${categoryId}!`, 404);
-// 		}
-// 		// Send response
-// 		res.status(200).json(category);
-// 	} catch (error) {
-// 		handleHTTPError(error, next);
-// 	}
-// };
+		// Order with orderId was not found.
+		if (!order) {
+			throw new HTTPError(`Could not found the order with id ${orderId}!`, 404);
+		}
+		// Send response
+		res.status(200).json(order);
+	} catch (error) {
+		handleHTTPError(error, next);
+	}
+};
 
 /*
 Create a new order
@@ -67,28 +56,27 @@ const createOrder = async (req, res, next) => {
 /*
 Update an exisiting category
 */
-const updateCategory = async (req, res, next) => {
+const updateOrder = async (req, res, next) => {
 	try {
-		// Get categoryId parameter
-		const { categoryId } = req.params;
-		console.log(categoryId);
+		// Get orderId parameter
+		const { orderId } = req.params;
 		// Get specific category from database
-		const category = await database.Category.findByPk(categoryId);
+		const order = await database.Order.findByPk(orderId);
 
-		if (category === null) {
-			throw new HTTPError(`Could not found the category with id ${categoryId}!`, 404);
+		if (!order) {
+			throw new HTTPError(`Could not found the order with id ${orderId}!`, 404);
 		}
 
-		// Update a specific post
+		// Update a specific order
 		const model = req.body;
-		const updatedPost = await database.Category.update(model, {
+		const updatedOrder = await database.Order.update(model, {
 			where: {
-				id: categoryId,
+				id: orderId,
 			},
 		});
 
 		// Send response
-		res.status(200).json(updatedPost);
+		res.status(200).json(updatedOrder);
 	} catch (error) {
 		handleHTTPError(error, next);
 	}
@@ -97,21 +85,21 @@ const updateCategory = async (req, res, next) => {
 /*
 Delete an exisiting category
 */
-const deleteCategory = async (req, res, next) => {
+const deleteOrder = async (req, res, next) => {
 	try {
 		// Get categoryId parameter
-		const { categoryId } = req.params;
+		const { orderId } = req.params;
 		// Get specific category from database
-		const category = await database.Category.findByPk(categoryId);
+		const order = await database.Order.findByPk(orderId);
 
-		if (category === null) {
-			throw new HTTPError(`Could not found the category with id ${categoryId}!`, 404);
+		if (!order) {
+			throw new HTTPError(`Could not found the order with id ${orderId}!`, 404);
 		}
 
 		// Delete a category with specified id
-		const message = await database.Category.destroy({
+		const message = await database.Order.destroy({
 			where: {
-				id: categoryId,
+				id: orderId,
 			},
 		});
 
@@ -122,4 +110,4 @@ const deleteCategory = async (req, res, next) => {
 	}
 };
 
-export { createOrder };
+export { createOrder, getOrders, getOrderById, updateOrder, deleteOrder };

@@ -23,7 +23,7 @@ Routes
  * /api/categories:
  *   get:
  *     summary: Retrieve a list of categories
- *     description: Retrieve a list of categories. Can be used to populate a list of categories when prototyping or testing an API.*    
+ *     description: Retrieve a list of categories. Can be used to populate a list of categories when prototyping or testing an API.*
  *     responses:
  *       200:
  *         description: A list of categories.
@@ -54,7 +54,7 @@ router.get('/categories/:categoryId', categoryController.getCategoryById);
  *   post:
  *     summary: Create a new category
  *     description: Create a new category
-*/
+ */
 router.post('/categories', categoryController.createCategory);
 router.put('/categories/:categoryId', categoryController.updateCategory);
 router.delete('/categories/:categoryId', categoryController.deleteCategory);

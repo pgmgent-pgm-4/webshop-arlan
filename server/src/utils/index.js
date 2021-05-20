@@ -17,8 +17,4 @@ const HTTPError = (message, statusCode) => {
 	return instance;
 };
 
-export {
-	convertArrayToPagedObject,
-	handleHTTPError,
-	HTTPError,
-};
+export { convertArrayToPagedObject, handleHTTPError, HTTPError };

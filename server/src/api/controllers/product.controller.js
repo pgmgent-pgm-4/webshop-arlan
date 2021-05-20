@@ -35,7 +35,4 @@ const getProductById = async (req, res, next) => {
 	}
 };
 
-export {
-	getProductById,
-	getProducts,
-};
+export { getProductById, getProducts };

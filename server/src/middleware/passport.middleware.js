@@ -1,31 +1,25 @@
 import passport from 'passport';
 import passportJWT from 'passport-jwt';
 
-import { databaseVariables, EnvironmentVariables } from '../config';
+import { EnvironmentVariables } from '../config';
 
 // Initialise passport
 const JwtStrategy = passportJWT.Strategy;
-const ExtractJwt = passportJWT.ExtractJwt;
+const { ExtractJwt } = passportJWT;
 
 // Define jwtOptions
 const jwtOptions = {
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: EnvironmentVariables.JWT_SECRET_KEY,
+	jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+	secretOrKey: EnvironmentVariables.JWT_SECRET_KEY,
 };
 
-let jwtStrategy = null;
+const jwtStrategy = new JwtStrategy(jwtOptions, async (jwtData, done) => {
+	try {
+		// Logger.info(`${jwtData.username} does an authenticated request`);
+		return done(null, jwtData.username);
+	} catch (error) {
+		return done(null, error);
+	}
+});
 
-if (jwtStrategy === null) {
-  new JwtStrategy(jwtOptions, async (jwtData, done) => {
-    try {
-      //Logger.info(`${jwtData.username} does an authenticated request`);
-      return done(null, jwtData.username);
-    } catch (error) {
-      done(null, error);
-    }
-  });
-};
-
-export {
-  jwtStrategy,
-}
+export { jwtStrategy };

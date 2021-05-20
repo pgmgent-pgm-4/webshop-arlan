@@ -76,7 +76,7 @@ const updateOrder = async (req, res, next) => {
 		});
 
 		// Send response
-		res.status(200).json(updatedOrder === 1 ? 'Succesfully updated order' : 'Error updating order');
+		res.status(200).json(updatedOrder[0] === 1 ? 'Succesfully updated order' : 'Error updating order');
 	} catch (error) {
 		handleHTTPError(error, next);
 	}

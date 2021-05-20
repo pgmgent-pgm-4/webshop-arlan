@@ -27,7 +27,7 @@ const getUserById = async (req, res, next) => {
 		const user = await database.User.findByPk(userId);
 
 		// User with userId was not found
-		if (!order) {
+		if (!user) {
 			throw new HTTPError(`Could not found the user with id ${userId}!`, 404);
 		}
 		// Send response
@@ -76,7 +76,7 @@ const updateUser = async (req, res, next) => {
 		});
 
 		// Send response
-		res.status(200).json(updatedUser === 1 ? 'Succesfully updated user' : 'Error updating user');
+		res.status(200).json(updatedUser[0] === 1 ? 'Succesfully updated user' : 'Error updating user');
 	} catch (error) {
 		handleHTTPError(error, next);
 	}

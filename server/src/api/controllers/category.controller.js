@@ -16,6 +16,7 @@ const getCategories = async (req, res, next) => {
 				offset: (currentPage - 1) * itemsPerPage,
 				limit: itemsPerPage,
 			});
+			console.log('Categories' + categories);
 			categories = convertArrayToPagedObject(categories, itemsPerPage, currentPage, await database.Category.count());
 		} else {
 			categories = await database.Category.findAll();

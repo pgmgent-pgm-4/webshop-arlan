@@ -8,6 +8,7 @@ Import custom packages
 */
 import * as categoryController from '../controllers/category.controller';
 import * as productController from '../controllers/product.controller';
+import * as orderController from '../controllers/order.controller';
 
 /*
 Make a router
@@ -61,5 +62,7 @@ router.delete('/categories/:categoryId', categoryController.deleteCategory);
 
 router.get('/products', productController.getProducts);
 router.get('/products/:productId', productController.getProductById);
+
+router.post('/orders', orderController.createOrder);
 
 export default router;

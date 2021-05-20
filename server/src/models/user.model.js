@@ -3,6 +3,7 @@ import { Model, DataTypes } from 'sequelize';
 export default (sequelize) => {
 	class User extends Model {
 		static associate(models) {
+			this.hasOne(models.Profile, { as: 'profile'})
 		}
 	}
 
@@ -10,7 +11,7 @@ export default (sequelize) => {
 		{
 			userName: DataTypes.STRING,
 			password: DataTypes.STRING,
-      email: DataTypes.STRING,
+      		email: DataTypes.STRING,
 		},
 		{
 			sequelize,

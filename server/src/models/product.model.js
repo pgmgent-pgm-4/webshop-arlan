@@ -3,15 +3,14 @@ import { Model, DataTypes } from 'sequelize';
 export default (sequelize) => {
 	class Product extends Model {
 		static associate(models) {
-			this.belongsTo(models.Category);
-			this.belongsToMany(models.Tag, { through: 'ProductTag' });
+			this.belongsToMany(models.Category, { through: 'product_has_categories' });
 		}
 	}
 
 	Product.init({
 		name: DataTypes.STRING,
-		description: DataTypes.TEXT,
-		price: DataTypes.FLOAT,
+		product_id: DataTypes.UUIDV4,
+
 	}, {
 		sequelize,
 		modelName: 'Product',

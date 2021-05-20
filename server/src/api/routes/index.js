@@ -7,9 +7,10 @@ import express from 'express';
 Import custom packages
 */
 import * as productReviewsController from '../controllers/product_reviews.controller';
-import * as favoriteController from '../controllers/favorites.controller';
+import * as favoriteController from '../controllers/favorite.controller';
 import * as categoryController from '../controllers/category.controller';
 import * as productController from '../controllers/product.controller';
+import * as paymentController from '../controllers/payment.controller';
 import * as orderController from '../controllers/order.controller';
 import * as userController from '../controllers/user.controller';
 
@@ -81,6 +82,12 @@ router.get('/users/:userId', userController.getUserById);
 router.post('/users', userController.createUser);
 router.put('/users/:userId', userController.updateUser);
 router.delete('/users/:userId', userController.deleteUser);
+
+router.get('/payments', paymentController.getPayments);
+router.get('/payments/:paymentId', paymentController.getPaymentById);
+router.post('/payments', paymentController.createPayment);
+router.put('/payments', paymentController.updatePayment);
+router.delete('/payments', paymentController.deletePayment);
 
 router.get('/productReviews', productReviewsController.getProductReviews);
 router.get('/productReviews/:productReviewId', productReviewsController.getProductReviewById);

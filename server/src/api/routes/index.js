@@ -6,6 +6,7 @@ import express from 'express';
 /*
 Import custom packages
 */
+import * as favoriteController from '../controllers/favorites.controller';
 import * as categoryController from '../controllers/category.controller';
 import * as productController from '../controllers/product.controller';
 import * as orderController from '../controllers/order.controller';
@@ -63,6 +64,10 @@ router.delete('/categories/:categoryId', categoryController.deleteCategory);
 
 router.get('/products', productController.getProducts);
 router.get('/products/:productId', productController.getProductById);
+
+router.get('/favorites', favoriteController.getFavortes);
+router.get('/favorites/:favoritesId', favoriteController.getFavoriteById);
+router.post('/favorites', favoriteController.createFavorite);
 
 router.get('/orders', orderController.getOrders);
 router.get('/orders/:orderId', orderController.getOrderById);

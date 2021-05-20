@@ -1,4 +1,4 @@
-import { convertArrayToPagedObject, handleHTTPError, HTTPError } from '../../utils';
+import { handleHTTPError, HTTPError } from '../../utils';
 import database from '../../database';
 
 /*
@@ -7,7 +7,7 @@ Get all categories
 const getOrders = async (req, res, next) => {
 	try {
 		// Get all orders from database
-		let orders = await database.Order.findAll();
+		const orders = await database.Order.findAll();
 
 		// Send response
 		res.status(200).json(orders);
@@ -45,9 +45,9 @@ const createOrder = async (req, res, next) => {
 		// Get body from response
 		const model = req.body;
 		// Create a post
-		const createOrder = await database.Order.create(model);
+		const createdOrder = await database.Order.create(model);
 		// Send response
-		res.status(201).json(createOrder);
+		res.status(201).json(createdOrder);
 	} catch (error) {
 		handleHTTPError(error, next);
 	}
@@ -76,7 +76,7 @@ const updateOrder = async (req, res, next) => {
 		});
 
 		// Send response
-		res.status(200).json(updatedOrder);
+		res.status(200).json(updatedOrder === 1 ? 'Succesfully updated order' : 'Error updating order');
 	} catch (error) {
 		handleHTTPError(error, next);
 	}
@@ -104,10 +104,12 @@ const deleteOrder = async (req, res, next) => {
 		});
 
 		// Send response
-		res.status(200).json(message);
+		res.status(200).json(message === 1 ? 'Succesfully updated order' : 'Error updating order');
 	} catch (error) {
 		handleHTTPError(error, next);
 	}
 };
 
-export { createOrder, getOrders, getOrderById, updateOrder, deleteOrder };
+export {
+	createOrder, getOrders, getOrderById, updateOrder, deleteOrder,
+};

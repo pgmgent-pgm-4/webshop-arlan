@@ -9,6 +9,7 @@ Import custom packages
 import * as categoryController from '../controllers/category.controller';
 import * as productController from '../controllers/product.controller';
 import * as orderController from '../controllers/order.controller';
+import * as userController from '../controllers/user.controller';
 
 /*
 Make a router
@@ -69,5 +70,10 @@ router.post('/orders', orderController.createOrder);
 router.put('/orders/:orderId', orderController.updateOrder);
 router.delete('/orders/:orderId', orderController.deleteOrder);
 
+router.get('/users', userController.getUsers);
+router.get('/users/:userId', userController.getUserById);
+router.post('/users', userController.createUser);
+router.put('/users/:userId', userController.updateUser);
+router.delete('/users/userId', userController.deleteUser);
 
 export default router;

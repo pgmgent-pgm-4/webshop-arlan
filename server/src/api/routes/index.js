@@ -6,6 +6,7 @@ import express from 'express';
 /*
 Import custom packages
 */
+import * as productReviewsController from '../controllers/product_reviews.controller';
 import * as favoriteController from '../controllers/favorites.controller';
 import * as categoryController from '../controllers/category.controller';
 import * as productController from '../controllers/product.controller';
@@ -66,7 +67,7 @@ router.get('/products', productController.getProducts);
 router.get('/products/:productId', productController.getProductById);
 
 router.get('/favorites', favoriteController.getFavortes);
-router.get('/favorites/:favoritesId', favoriteController.getFavoriteById);
+router.get('/favorites/:favoriteId', favoriteController.getFavoriteById);
 router.post('/favorites', favoriteController.createFavorite);
 
 router.get('/orders', orderController.getOrders);
@@ -80,5 +81,11 @@ router.get('/users/:userId', userController.getUserById);
 router.post('/users', userController.createUser);
 router.put('/users/:userId', userController.updateUser);
 router.delete('/users/:userId', userController.deleteUser);
+
+router.get('/productReviews', productReviewsController.getProductReviews);
+router.get('/productReviews/:productReviewId', productReviewsController.getProductReviewById);
+router.post('/productReviews', productReviewsController.createProductReview);
+router.put('/productReviews', productReviewsController.updateProductReview);
+router.delete('/productReview', productReviewsController.deleteProductReview);
 
 export default router;

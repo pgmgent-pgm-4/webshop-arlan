@@ -1,4 +1,4 @@
-import { handleHTTPError } from '../../utils';
+import { handleHTTPError, HTTPError } from '../../utils';
 import database from '../../database';
 
 /*
@@ -23,11 +23,12 @@ const getFavoriteById = async (req, res, next) => {
 		// Get favoriteId parameter
 		const { favoriteId } = req.params;
 		// Get specific favorite from database
-		const favorite = await database.Favorite.findAll({
-			where: {
-				id: favoriteId,
-			},
-		});
+		const favorite = await database.Favorite.findByPk(favoriteId);
+
+		// Favorite with orderId was not found.
+		if (!favorite) {
+			throw new HTTPError(`Could not found the favorite with id ${favoriteId}!`, 404);
+		}
 		// Send response
 		res.status(200).json(favorite);
 	} catch (error) {

@@ -10,9 +10,9 @@ export default (sequelize) => {
 	Order.init(
 		{
 			date: DataTypes.DATE,
-            price: DataTypes.NUMBER,
-            order_value: DataTypes.NUMBER,
-            status: DataTypes.TEXT
+			price: DataTypes.NUMBER,
+			order_value: DataTypes.NUMBER,
+			status: DataTypes.TEXT,
 
 		},
 		{

@@ -1,7 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 
 export default (sequelize) => {
-	class Product_review extends Model {
+	class ProductReview extends Model {
 		static associate(models) {
 			this.belongsToMany(models.Product, { through: 'product_has_categories' });
 			this.belongsTo(models.User);
@@ -9,7 +9,7 @@ export default (sequelize) => {
 		}
 	}
 
-	Product_review.init(
+	ProductReview.init(
 		{
 			message: DataTypes.STRING,
 			rating: DataTypes.INTEGER
@@ -20,5 +20,5 @@ export default (sequelize) => {
 		},
 	);
 
-	return Product_review;
+	return ProductReview;
 };

@@ -1,18 +1,17 @@
 import { Model, DataTypes } from 'sequelize';
 
 export default (sequelize) => {
-	class Order_product extends Model {
+	class OrderProduct extends Model {
 		static associate(models) {
-			this.belongsTo(models.Product)
-
+			this.belongsTo(models.Product);
 		}
 	}
 
-	Order_product.init(
+	OrderProduct.init(
 		{
 			order_id: DataTypes.UUIDV4,
 			price_per_item: DataTypes.INTEGER,
-			amount: DataTypes.INTEGER
+			amount: DataTypes.INTEGER,
 		},
 		{
 			sequelize,
@@ -20,5 +19,5 @@ export default (sequelize) => {
 		},
 	);
 
-	return Order_product;
+	return OrderProduct;
 };

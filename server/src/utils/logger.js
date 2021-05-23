@@ -1,3 +1,7 @@
+/**
+ * A logger object
+ */
+
 import chalk from 'chalk';
 
 export default {

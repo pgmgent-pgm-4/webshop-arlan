@@ -12,7 +12,7 @@ import { createTerminus } from '@godaddy/terminus';
 Custom modules
 */
 import { EnvironmentVariables } from './config';
-import { morganMiddleware, swaggerSpec } from './middleware';
+import { morganMiddleware, swaggerSpec, passport } from './middleware';
 import apiRoutes from './api/routes';
 
 /*

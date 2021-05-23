@@ -13,6 +13,8 @@ import * as productController from '../controllers/product.controller';
 import * as paymentController from '../controllers/payment.controller';
 import * as orderController from '../controllers/order.controller';
 import * as userController from '../controllers/user.controller';
+import * as authenticationController from '../../actions/auth';
+import { passport } from '../../middleware';
 
 /*
 Make a router
@@ -71,7 +73,7 @@ router.get('/favorites', favoriteController.getFavortes);
 router.get('/favorites/:favoriteId', favoriteController.getFavoriteById);
 router.post('/favorites', favoriteController.createFavorite);
 
-router.get('/orders', orderController.getOrders);
+router.get('/orders', passport, orderController.getOrders);
 router.get('/orders/:orderId', orderController.getOrderById);
 router.post('/orders', orderController.createOrder);
 router.put('/orders/:orderId', orderController.updateOrder);
@@ -94,5 +96,8 @@ router.get('/productReviews/:productReviewId', productReviewsController.getProdu
 router.post('/productReviews', productReviewsController.createProductReview);
 router.put('/productReviews', productReviewsController.updateProductReview);
 router.delete('/productReview', productReviewsController.deleteProductReview);
+
+router.post('/register', authenticationController.handleRegister);
+router.post('/login', authenticationController.handleLogin);
 
 export default router;

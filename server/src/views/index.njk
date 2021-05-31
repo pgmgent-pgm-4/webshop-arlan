@@ -10,7 +10,9 @@
 <body>
   <main>
     {% include "./partials/header.njk" %}
-    
+    {%for data in tickerData -%}
+      {{data.name}}
+    {%-endfor%}
     {% include "./partials/footer.njk" %}
   </main>
   <script src="https://kit.fontawesome.com/eefbba8f9b.js" crossorigin="anonymous"></script>

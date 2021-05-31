@@ -4,7 +4,7 @@
   "description": "Webshop of the education programme \"Associate Degree in Computer Programming\"",
   "main": "src/app.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development HOSTNAME=localhost PORT=8080 nodemon --exec babel-node -e js,html,nj src/app.js --watch src/*",
+    "dev": "cross-env NODE_ENV=development HOSTNAME=localhost PORT=8080 nodemon --exec babel-node -e js,html,nj src/app.js --watch src/* ",
     "lint": "cross-env NODE_ENV=lint eslint . --ext .js --fix",
     "build": "sass ./src/sass/style.scss ./src/public/css/main.css --watch"
   },

@@ -1,5 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import "../../node_modules/tailwindcss/base.css";
-@import "../../node_modules/tailwindcss/utilies";
-@import "../../node_modules/tailwindcss/components";
-
+body {
+    background-color: black;
+}

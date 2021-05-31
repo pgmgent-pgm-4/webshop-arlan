@@ -13,6 +13,9 @@
     {%for data in tickerData -%}
       {{data.name}}
     {%-endfor%}
+    {% include "./partials/discover-trending.njk" %}
+    {% include "./partials/why-arlan.njk" %}
+    {% include "./partials/cryptocurrencies.njk" %}
     {% include "./partials/footer.njk" %}
   </main>
   <script src="https://kit.fontawesome.com/eefbba8f9b.js" crossorigin="anonymous"></script>

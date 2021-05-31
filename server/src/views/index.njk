@@ -8,10 +8,15 @@
   <title>Document</title>
 </head>
 <body>
-  <main>
+  <main class="container mx-auto">
     {% include "./partials/header.njk" %}
     {%for data in tickerData -%}
-      {{data.name}}
+      <div class="bg-gray-100 my-10 border-indigo-600 | p-4 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer">
+      <div class="flex flex-col text-center content-center justify-center">
+        <p class="text-gray-900 font-semibold">{{data.name}}</p>
+        <p class="text-black text-justify font-semibold">€{{data.current_price}}</p>
+      </div>
+    </div>
     {%-endfor%}
     {% include "./partials/discover-trending.njk" %}
     {% include "./partials/why-arlan.njk" %}

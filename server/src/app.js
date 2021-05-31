@@ -66,6 +66,11 @@ if (EnvironmentVariables.NODE_ENV === 'development') {
 }
 
 /*
+Public Routes
+*/
+app.use('/', cors(), publicRoutes);
+
+/*
 API Routes
 */
 app.use('/api', cors(), apiRoutes);

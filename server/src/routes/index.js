@@ -1,9 +1,7 @@
 import express from 'express';
-import { Router } from "express";
+import publicController from '../controllers/publicController';
 
-import publicController from '../controllers/publicController'
 const router = express.Router();
-
 
 router.get('/', publicController.getHome);
 

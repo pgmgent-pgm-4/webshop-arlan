@@ -70,6 +70,18 @@ API Routes
 */
 app.use('/api', cors(), apiRoutes);
 
+/*
+View Engine
+*/
+nunjucks.configure(path.join(__dirname, 'views'), {
+	autoescape: true,
+	express: app,
+	noCache: true,
+	watch: true,
+});
+app.set('view engine', 'njk');
+
+app.use(express.static(__dirname + '/public'));
 
 /*
 Public Routes

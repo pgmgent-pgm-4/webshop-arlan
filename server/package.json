@@ -5,7 +5,8 @@
   "main": "src/app.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development HOSTNAME=localhost PORT=8080 nodemon --exec babel-node -e js,html,nj src/app.js --watch src/*",
-    "lint": "cross-env NODE_ENV=lint eslint . --ext .js --fix"
+    "lint": "cross-env NODE_ENV=lint eslint . --ext .js --fix",
+    "build": "sass ./src/sass/style.scss ./src/public/css/main.css --watch"
   },
   "keywords": [
     "node.js",
@@ -47,11 +48,13 @@
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
     "morgan": "^1.10.0",
+    "node-sass": "^6.0.0",
     "nunjucks": "^3.2.3",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
+    "sass": "^1.34.0",
     "sequelize": "^6.6.2",
     "sqlite3": "^5.0.2",
     "swagger-jsdoc": "6.1.0",

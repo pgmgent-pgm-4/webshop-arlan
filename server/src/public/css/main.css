@@ -32713,6 +32713,10 @@ video {
   --tw-backdrop-sepia: sepia(100%);
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Inter", Helvetica, sans-serif;
 }

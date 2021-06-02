@@ -76,7 +76,18 @@
       </div>
     </div>
   </header>
-  <div class="hero">
-    <h2 class="hero__heading">Buy Cryptocurrency securely on Arlan.</h2>
+
+  <div class="ticker">
+    <div class="ticker__data flex">
+    {% for data in tickerData -%}
+    <li class="list-none w-full pr-8">
+      <ul class="ticker__data--item w-full flex">
+        <img class="w-6" src={{data.image}}>
+        <span class="text-xs">{{data.name}}</span>
+        <span class="text-xs">{{data.price_change_percentage_24h | round}}</span>
+      </ul>
+    </li>
+    {%- endfor %}
+    </div>
   </div>
-</section>
+  </section>

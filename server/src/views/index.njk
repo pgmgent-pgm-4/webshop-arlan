@@ -9,7 +9,7 @@
 </head>
 <body>
   {% include "./partials/header.njk" %}
-  <main class="container mx-auto">
+  <main>
     {%for data in tickerData -%}
       <div class="bg-gray-100 my-10 border-indigo-600  | p-4 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer">
       <div class="flex flex-col text-center content-center justify-center">
@@ -19,7 +19,31 @@
     </div>
     {%-endfor%}
     {% include "./partials/discover-trending.njk" %}
-    {% include "./partials/why-arlan.njk" %}
+
+    <section class="bg-site-secondary-bg">
+    <div class="whyarlan bg-site-secondary-bg container mx-auto">
+      <h2 class="text-lg text-center">Why choose Arlan</h2>
+      <p>We offer a wide range of coins you can buy on our site. Below are some of the ones that have received the most attention from our customers.</p>
+      <div class="discover__list">
+        <div class="discorver__list--item">
+          <img src="media/whyarlan/safe.png" />
+          <h3>Safe</h3>
+          <p>With countell checks and the latest technologies, your transactions are secured on multiple levels.</p>
+        </div>
+        <div class="discorver__list--item">
+          <img src="media/whyarlan/simple.png" />
+          <h3>Simple</h3>
+          <p>We strive to make out platform easy to use, so anybody can get involved in investing and start making money from it.</p>
+        </div>
+        <div class="discorver__list--item">
+          <img src="media/whyarlan/competitive.png" />
+          <h3>Competitive</h3>
+          <p>Because we're able to sell packets of coins, we are able to sell at a very competitive price compared to other platforms.</p>
+        </div>
+      </div>
+    </div>
+    </section>
+
     {% include "./partials/cryptocurrencies.njk" %}
   </main>
     {% include "./partials/footer.njk" %}

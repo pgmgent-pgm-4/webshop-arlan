@@ -6,4 +6,10 @@ body {
   font-family: "Inter", Helvetica, sans-serif;
 }
 
+@media screen and (min-width: 768px) {
+  .discover__list--item {
+    width: 30%;
+  }
+}
+
 /*# sourceMappingURL=main.css.map */

@@ -50,6 +50,7 @@
     "cors": "^2.8.5",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
+    "gsap": "^3.6.1",
     "helmet": "^4.6.0",
     "http": "0.0.1-security",
     "jsonwebtoken": "^8.5.1",

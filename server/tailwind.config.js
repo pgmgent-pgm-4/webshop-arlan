@@ -8,8 +8,15 @@ module.exports = {
 				'site-primary': '#0045D3',
 				'site-secondary': '#023191',
 				'site-accent': '#D38E00',
-				'site-bg': '#EFF3FF',
+				'site-bg': '#F7F8FC',
 				'site-secondary-bg': '#EFF3FF'
+			},
+			minWidth: {
+				'1/4': '25%',
+				'1/2': '50%'
+			},
+			boxShadow: {
+				card: '0 20px 25px -5px rgb(38 137 251 / 15%)'
 			}
 		},
 	},

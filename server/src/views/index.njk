@@ -1,58 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/main.css">
-  <title>Document</title>
-</head>
-<body>
-  {% include "./partials/header.njk" %}
-  <main>
-    {%for data in tickerData -%}
-      <div class="bg-gray-100 my-10 border-indigo-600  | p-4 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer">
-      <div class="flex flex-col text-center content-center justify-center">
-        <p class="text-gray-900 font-semibold">{{data.name}}</p>
-        <p class="text-black text-justify font-semibold">€{{data.current_price}}</p>
-      </div>
-    </div>
-    {%-endfor%}
-    {% include "./partials/discover-trending.njk" %}
-
-    <section class="bg-site-secondary-bg">
-    <div class="whyarlan bg-site-secondary-bg container mx-auto">
-      <h2 class="text-xl text-left md:text-center md:text-4xl lg:text-5xl font-bold py-8">Why choose Arlan?</h2>
-      <p class="hidden md:block text-center w-2/5 m-auto mb-10">We believe that every person, no matter their experience or skills should be able to purchase cryptocurrencies. That's why we use a simple system, to make it as easy as possible, yet still secure and competitive with the rest.</p>
-      <div class="discover__list flex flex-wrap m-auto md:justify-between">
-        <div class="discover__list--item bg-white my-4 mb-12 rounded-xl">
-          <div class="list__item--content p-4">
-            <img src="media/whyarlan/safe.png" class="m-auto -mt-12"/>
-            <h3 class="font-bold pb-4 text-2xl">Safe</h3>
-            <p>With countell checks and the latest technologies, your transactions are secured on multiple levels.</p>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Document</title>
+  </head>
+  <body>
+    {% include "./partials/header.njk" %}
+    <main>
+      <section class="bg-site-bg overflow-hidden">
+        <h2 class="text-xl  w-full text-left md:text-center md:text-4xl lg:text-5xl font-bold py-8">Discover trending coins</h2>
+        <p class="hidden md:block text-center w-2/5 m-auto mb-10">We offer a wide range of coins you can buy on our site. Below
+          are some of the ones that have received the most attention from our customers.</p>
+        <div class="container mx-auto flex py-10">
+          {% for data in tickerData -%}
+            <div class="flex flex-wrap min-w-1/4 bg-white text-gray-800 p-5 rounded-2xl shadow-card ml-5">
+              <div class="flex w-full justify-between items-center">
+                <div class="flex content-center">
+                  <img src="{{ data.image }}" class="w-7"/>
+                  <h3 class="text-lg font-bold ml-3">{{ data.name }}</h3>
+                </div>
+                <h3 class="text-sm font-bold uppercase">{{ data.symbol }}</h3>
+              </div>
+              <p class="w-full font-bold text-3xl pt-6">€{{ data.current_price | round }}</p>
+              <p class="w-full text-sm">+{{ data.price_change_percentage_24h | round(2) }}% in the past 24 hours</p>
+            </div>
+          {%- endfor %}
+        </div>
+      </section>
+      <section class="bg-site-secondary-bg">
+        <div class="whyarlan bg-site-secondary-bg container mx-auto">
+          <h2 class="text-xl text-left md:text-center md:text-4xl lg:text-5xl font-bold py-8">Why choose Arlan?</h2>
+          <p class="hidden md:block text-center w-2/5 m-auto mb-10">We believe that every person, no matter their experience or
+            skills should be able to purchase cryptocurrencies. That's why we use a simple system, to make it as easy as possible,
+            yet still secure and competitive with the rest.</p>
+          <div class="discover__list flex flex-wrap m-auto md:justify-between">
+            <div class="discover__list--item bg-white my-4 mb-12 rounded-xl">
+              <div class="list__item--content p-4">
+                <img src="media/whyarlan/safe.png" class="m-auto -mt-12"/>
+                <h3 class="font-bold pb-4 text-2xl">Safe</h3>
+                <p>With countell checks and the latest technologies, your transactions are secured on multiple levels.</p>
+              </div>
+            </div>
+            <div class="discover__list--item bg-white my-4 mb-12 rounded-xl">
+              <div class="list__item--content p-4">
+                <img src="media/whyarlan/simple.png" class="m-auto -mt-12"/>
+                <h3 class="font-bold pb-4 text-2xl">Simple</h3>
+                <p>We strive to make out platform easy to use, so anybody can get involved in investing and start making money from it.</p>
+              </div>
+            </div>
+            <div class="discover__list--item bg-white my-4  mb-12 rounded-xl">
+              <div class="list__item--content p-4">
+                <img src="media/whyarlan/competitive.png" class="m-auto -mt-12"/>
+                <h3 class="font-bold pb-4 text-2xl">Competitive</h3>
+                <p>Because we're able to sell packets of coins, we are able to sell at a very competitive price compared to other
+                  platforms.</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="discover__list--item bg-white my-4 mb-12 rounded-xl">
-          <div class="list__item--content p-4">
-            <img src="media/whyarlan/simple.png" class="m-auto -mt-12" />
-            <h3 class="font-bold pb-4 text-2xl">Simple</h3>
-            <p>We strive to make out platform easy to use, so anybody can get involved in investing and start making money from it.</p>
-          </div>
-        </div>
-        <div class="discover__list--item bg-white my-4  mb-12 rounded-xl">
-          <div class="list__item--content p-4">
-            <img src="media/whyarlan/competitive.png" class="m-auto -mt-12"/>
-            <h3 class="font-bold pb-4 text-2xl">Competitive</h3>
-            <p>Because we're able to sell packets of coins, we are able to sell at a very competitive price compared to other platforms.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    </section>
-
-    {% include "./partials/cryptocurrencies.njk" %}
-  </main>
-    {% include "./partials/footer.njk" %}
-  <script src="https://kit.fontawesome.com/eefbba8f9b.js" crossorigin="anonymous"></script>
-</body>
-</html>
+      </section>
+      {% include "./partials/cryptocurrencies.njk" %}</body>
+  </body>
+</html></main>{% include "./partials/footer.njk" %}<script src="https://kit.fontawesome.com/eefbba8f9b.js" crossorigin="anonymous"></script></body></html></body></html>

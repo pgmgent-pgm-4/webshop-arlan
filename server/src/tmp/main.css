@@ -1,35 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-.ticker {
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  background-color: #111;
-}
-.ticker__data {
-  width: 100%;
-  overflow: hidden;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  margin-left: -60rem;
-}
-.ticker__data--item {
-  width: 100%;
-  position: absolute;
-}
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 4 | @import 'components/ticker';
+ *   |         ^^^^^^^^^^^^^^^^^^^
+ *   '
+ *   src\sass\main.scss 4:9  root stylesheet */
 
-body {
-  font-family: "Inter", Helvetica, sans-serif;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 4 \2502  @import 'components/ticker';\d\a   \2502          ^^^^^^^^^^^^^^^^^^^\a   \2575 \a   src\\sass\\main.scss 4:9  root stylesheet";
 }
-
-@media screen and (min-width: 768px) {
-  .discover__list--item {
-    width: 30%;
-  }
-}
-
-/*# sourceMappingURL=main.css.map */

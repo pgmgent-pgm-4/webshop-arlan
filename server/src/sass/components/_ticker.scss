@@ -2,7 +2,7 @@
     width: 100%;
     position: relative;
     overflow: hidden;
-    background-color: #111;
+    background-color: rgb(48, 48, 48);
 
     &__data {
         width: 100%;
@@ -11,10 +11,10 @@
         display: flex;
         align-items: center;
         justify-content: space-evenly;
-        margin-left: -60rem;
+        margin-left: -65rem;
 
         &--item {
-            width: 100%;
+            display: flex;
             position: absolute;
         }
     }

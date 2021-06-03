@@ -32746,58 +32746,6 @@ video {
   --tw-backdrop-sepia: sepia(100%);
 }
 
-@-webkit-keyframes ticker {
-  0% {
-    transform: translate3d(0, 0, 0);
-    visibility: visible;
-  }
-
-  100% {
-    transform: translate3d(-135%, 0, 0);
-  }
-}
-
-@keyframes ticker {
-  0% {
-    transform: translate3d(0, 0, 0);
-    visibility: visible;
-  }
-
-  100% {
-    transform: translate3d(-135%, 0, 0);
-  }
-}
-
-.ticker {
-  overflow: hidden;
-  height: 4rem;
-  background-color: rgba(0, 0, 0, 0.9);
-  box-sizing: content-box;
-}
-
-.ticker .ticker__data {
-  display: inline-flex;
-  line-height: 4rem;
-  white-space: nowrap;
-  box-sizing: content-box;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-  -webkit-animation-name: ticker;
-  animation-name: ticker;
-  -webkit-animation-duration: 20s;
-  animation-duration: 20s;
-}
-
-.ticker .ticker__data__item {
-  display: inline-flex;
-  align-items: center;
-  padding: 0 2rem;
-  font-size: 2rem;
-  color: white;
-}
-
 body {
   font-family: "Inter", Helvetica, sans-serif;
 }

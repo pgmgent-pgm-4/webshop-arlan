@@ -1,0 +1,21 @@
+.ticker {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: #111;
+
+    &__data {
+        width: 100%;
+        overflow: hidden;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        margin-left: -60rem;
+
+        &--item {
+            width: 100%;
+            position: absolute;
+        }
+    }
+}

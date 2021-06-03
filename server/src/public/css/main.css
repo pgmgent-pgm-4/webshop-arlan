@@ -32768,6 +32768,10 @@ video {
   position: absolute;
 }
 
+.header {
+  background-color: blue;
+}
+
 body {
   font-family: "Inter", Helvetica, sans-serif;
 }

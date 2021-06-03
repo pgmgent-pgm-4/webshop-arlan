@@ -80,11 +80,13 @@
   <div class="ticker">
     <div class="ticker__data flex">
     {% for data in tickerData -%}
-    <li class="list-none w-full pr-8">
-      <ul class="ticker__data--item w-full flex">
-        <img class="w-6" src={{data.image}}>
-        <span class="text-xs">{{data.name}}</span>
-        <span class="text-xs">{{data.price_change_percentage_24h | round}}</span>
+    <li class="list-none">
+      <ul class="ticker__data--item text-white">
+        <li class="pr-8">
+          <img class="w-6 inline" src={{data.image}}>
+          <span class="text-xs inline">{{data.name}}</span>
+          <span class="text-xs inline">{{data.price_change_percentage_24h | round}}</span>
+        </li>
       </ul>
     </li>
     {%- endfor %}

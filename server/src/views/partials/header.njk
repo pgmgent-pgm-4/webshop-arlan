@@ -66,7 +66,7 @@
       <div class="items-center justify-between md:flex">
         <div class="w-full md:w-6/12">
           <div>
-            <h1 class="text-2xl font-semibold text-white uppercase dark:text-white md:text-5xl">Buy cryptocurrency securely on
+            <h1 class="text-2xl font-extrabold text-white uppercase dark:text-white md:text-5xl">Buy cryptocurrency securely on
               Arlan.</h1>
           </div>
         </div>
@@ -81,12 +81,15 @@
     <div class="ticker__data flex">
     {% for data in tickerData -%}
       <ul class="ticker__data--item text-white">
-        <li class="pr-16">
-          <img class="w-6 inline" src={{data.image}}>
-          <span class="text-xs inline">{{data.name}}</span>
-          <span class="text-xs inline">{{data.price_change_percentage_24h | round}}</span>
+        <li>
+          <div class="data__item--content flex items-center">
+            <img class="w-6" src={{data.image}}>
+            <span class="text-sm pl-3">{{data.name}}</span>
+            <span class="text-sm pl-3">{{data.price_change_percentage_24h | round}}%</span>
+          </div>
         </li>
       </ul>
     {%- endfor %}
   </div>
   </section>
+

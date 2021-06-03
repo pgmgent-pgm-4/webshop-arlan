@@ -1,6 +1,6 @@
 gsap.set(".ticker", { y: 0 });
 
-let boxWidth = 250,
+let boxWidth = 200,
 	totalWidth = boxWidth * 30, //  * n of boxes
 	no01 = document.querySelectorAll(".ticker__data--item"),
 	dirFromLeft = "+=" + totalWidth,
@@ -28,6 +28,6 @@ const marquee = (which, time, direction) => {
 
 let master = gsap
 	.timeline()
-	.add(marquee(no01, 30, dirFromLeft), 1)
+	.add(marquee(no01, 50, dirFromLeft), 1)
 
 // =============================

@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', publicController.getHome);
 
-router.get('/:id', publicController.getDetail);
+router.get('/detail/:id', publicController.getDetail);
 
 // export default Router;
 module.exports = router;

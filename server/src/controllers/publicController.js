@@ -14,10 +14,11 @@ const getHome = async(req, res, next) => {
 	}
 };
 
-const id = 'bitcoin';
-const DETAIL_URL = `https://api.coingecko.com/api/v3/coins/${id}?tickers=true&market_data=true&community_data=false&developer_data=true&sparkline=true`;
 
 const getDetail = async(req, res, next) => {
+ console.log(req.params);
+ const { id } = req.params;
+ const DETAIL_URL = `https://api.coingecko.com/api/v3/coins/${id}?tickers=true&market_data=true&community_data=false&developer_data=true&sparkline=true`;
 	try {
 		const tickerData = await fetch(URL);
 		const tickerResponse = await tickerData.json();

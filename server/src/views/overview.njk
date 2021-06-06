@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <base href="../">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/main.css">
+  <title>Document</title>
+ </head>
+ <body>
+  {% include "./partials/header.njk" %}
+  <main>
+     <div class="container mx-auto flex flex-wrap py-10">
+     <div class="flex w-full justify-between">
+      <p class="uppercase font-bold ml-3">name</p>
+      <div class="flex">
+       <p class="uppercase mr-14 font-bold">price</p>
+       <p class="uppercase mr-24 font-bold">change</p>
+      </div>
+     </div>
+     {% for data in tickerData.slice(0, 30) -%}
+      <div class="flex flex-wrap items-center justify-between min-w-full bg-white text-gray-800 rounded-2xl mb-3 shadow-card">
+       <div class="flex items-center pl-5">
+        <div class="flex content-center">
+         <img src="{{ data.image }}" class="w-7"/>
+         <h3 class="text-lg font-bold ml-3">{{ data.name }}</h3>
+        </div>
+        <h3 class="text-sm ml-2 font-bold uppercase">{{ data.symbol }}</h3>
+       </div>
+       <div class="flex items-center">
+        <div class="flex">
+         <p class="font-bold pr-5 text-xl text-right">€{{ data.current_price | round(5) }}</p>
+         <p class="w-full text-xl mr-8 text-red-500 {{ 'text-green-500' if data.price_change_percentage_24h > 0 }}">{{ '+' if data.price_change_percentage_24h > 0 }}{{ data.price_change_percentage_24h | round(2) }}%</p>
+        </div>
+        <a href="{{ data.id }}" class="bg-site-primary hover:bg-blue-700 text-white font-bold py-4 px-4 rounded-r-2xl">
+         Buy
+        </a>
+       </div>
+      </div>
+     {%- endfor %}
+    </div>
+  </main>
+  {% include "./partials/footer.njk" %}
+  <script src="https://kit.fontawesome.com/eefbba8f9b.js" crossorigin="anonymous"></script>
+  <script src="scripts/gsap/gsap.min.js" crossorigin="anonymous"></script>
+  <script src="scripts/chartjs.js" crossorigin="anonymous"></script>
+  <script src="scripts/app.js"></script>
+ </body>
+</html>

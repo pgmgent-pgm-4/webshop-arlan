@@ -86,7 +86,7 @@
          <p class="font-bold pr-5 text-xl text-right">€{{ data.current_price | round(5) }}</p>
          <p class="w-full text-xl mr-8 text-red-500 {{ 'text-green-500' if data.price_change_percentage_24h > 0 }}">{{ '+' if data.price_change_percentage_24h > 0 }}{{ data.price_change_percentage_24h | round(2) }}%</p>
         </div>
-        <a href="{{ data.id }}" class="bg-site-primary hover:bg-blue-700 text-white font-bold py-4 px-4 rounded-r-2xl">
+        <a href="detail/{{ data.id }}" class="bg-site-primary hover:bg-blue-700 text-white font-bold py-4 px-4 rounded-r-2xl">
          Buy
         </a>
        </div>

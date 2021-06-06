@@ -23,3 +23,4 @@ export default {
 		await queryInterface.bulkDelete(database.Category.tableName, null, {});
 	},
 };
+ 

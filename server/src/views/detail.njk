@@ -21,7 +21,7 @@
      </div>
      <div class="flex flex-col ml-5 w-1/3 bg-white text-gray-800 p-5 rounded-2xl shadow-card">
       <h2 class="text-2xl w-full font-extrabold">About {{ detailData.name }}</h2>
-      <p>{{ detailData.description.en.slice(0, 500) }}...
+      <p>{{ detailData.description.en.slice(0, 500) | safe }}...
        <a class="text-blue-500" href="{{ detailData.links.homepage[0] }}">Learn more</a>
       </p>
      </div>

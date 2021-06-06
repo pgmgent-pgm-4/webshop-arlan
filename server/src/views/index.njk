@@ -69,7 +69,7 @@
       <p class="uppercase font-bold ml-3">name</p>
       <div class="flex">
        <p class="uppercase mr-14 font-bold">price</p>
-       <p class="uppercase mr-24 font-bold">change</p>
+       <p class="uppercase mr-28 font-bold">change</p>
       </div>
      </div>
      {% for data in tickerData.slice(0, 10) -%}
@@ -82,13 +82,13 @@
         <h3 class="text-sm ml-2 font-bold uppercase">{{ data.symbol }}</h3>
        </div>
        <div class="flex items-center">
-        <div class="flex">
-         <p class="font-bold pr-5 text-xl text-right">€{{ data.current_price | round(5) }}</p>
-         <p class="w-full text-xl mr-8 text-red-500 {{ 'text-green-500' if data.price_change_percentage_24h > 0 }}">{{ '+' if data.price_change_percentage_24h > 0 }}{{ data.price_change_percentage_24h | round(2) }}%</p>
+        <div class="flex justify-evenly items-center">
+         <p class="font-bold mr-12 text-xl text-right">€{{ data.current_price | round(5) }}</p>
+         <p class="w-20 text-xl mr-12 text-red-500 text-right {{ 'text-green-500' if data.price_change_percentage_24h > 0 }}">{{ '+' if data.price_change_percentage_24h > 0 }}{{ data.price_change_percentage_24h | round(2) }}%</p>
+         <a href="detail/{{ data.id }}" class="bg-site-primary hover:bg-blue-700 text-white font-bold py-4 px-4 rounded-r-2xl">
+          Buy
+         </a>
         </div>
-        <a href="detail/{{ data.id }}" class="bg-site-primary hover:bg-blue-700 text-white font-bold py-4 px-4 rounded-r-2xl">
-         Buy
-        </a>
        </div>
       </div>
      {%- endfor %}

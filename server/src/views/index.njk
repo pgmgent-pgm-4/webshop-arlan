@@ -16,7 +16,7 @@
      are some of the ones that have received the most attention from our customers.</p>
     <div class="container mx-auto flex py-10">
      {% for data in tickerData -%}
-      <div class="flex flex-wrap min-w-1/4 bg-white text-gray-800 p-5 rounded-2xl shadow-card ml-5">
+      <a href="{{ data.id }}" class="flex flex-wrap min-w-1/4 bg-white text-gray-800 p-5 rounded-2xl shadow-card ml-5">
        <div class="flex w-full justify-between items-center">
         <div class="flex content-center">
          <img src="{{ data.image }}" class="w-7"/>
@@ -26,7 +26,7 @@
        </div>
        <p class="w-full font-bold text-3xl pt-6">€{{ data.current_price | round(5) }}</p>
        <p class="w-full text-sm text-red-500 {{ 'text-green-500' if data.price_change_percentage_24h > 0 }}">{{ '+' if data.price_change_percentage_24h > 0 }}{{ data.price_change_percentage_24h | round(2) }}% in the past 24 hours</p>
-      </div>
+      </a>
      {%- endfor %}
     </div>
    </section>
@@ -86,9 +86,9 @@
          <p class="font-bold pr-5 text-xl text-right">€{{ data.current_price | round(5) }}</p>
          <p class="w-full text-xl mr-8 text-red-500 {{ 'text-green-500' if data.price_change_percentage_24h > 0 }}">{{ '+' if data.price_change_percentage_24h > 0 }}{{ data.price_change_percentage_24h | round(2) }}%</p>
         </div>
-        <button class="bg-site-primary hover:bg-blue-700 text-white font-bold py-4 px-4 rounded-r-2xl">
+        <a href="{{ data.id }}" class="bg-site-primary hover:bg-blue-700 text-white font-bold py-4 px-4 rounded-r-2xl">
          Buy
-        </button>
+        </a>
        </div>
       </div>
      {%- endfor %}

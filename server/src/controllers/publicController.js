@@ -14,6 +14,26 @@ const getHome = async(req, res, next) => {
 	}
 };
 
+const id = 'bitcoin';
+const DETAIL_URL = `https://api.coingecko.com/api/v3/coins/${id}?tickers=true&market_data=true&community_data=false&developer_data=true&sparkline=true`;
+
+const getDetail = async(req, res, next) => {
+	try {
+		const tickerData = await fetch(URL);
+		const tickerResponse = await tickerData.json();
+
+		const detailData = await fetch(DETAIL_URL);
+		const detailResponse = await detailData.json();
+		res.render('detail', {
+			tickerData: tickerResponse.slice(0, 30),
+			detailData: detailResponse,
+		});
+	} catch (error) {
+		throw new Error(error, next);
+	}
+};
+
 module.exports = {
 	getHome,
+	getDetail,
 };

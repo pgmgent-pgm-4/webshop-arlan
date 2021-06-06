@@ -84,7 +84,7 @@
                 <span class="text-sm ml-3">{{ data.name }}</span>
                 <div class="flex ml-1">
                   <span class="text-sm ml-2 flex text-red-500 {{ 'text-green-500' if data.price_change_percentage_24h > 0 }}">{{ '▲' if data.price_change_percentage_24h > 0 else '▼'}}</span>
-                  <span class="text-sm text-red-500 {{ 'text-green-500' if data.price_change_percentage_24h > 0 }}">{{ '+' if data.price_change_percentage_24h > 0 }}{{ data.price_change_percentage_24h | round }}%</span>
+                  <span class="text-sm text-red-500 {{ 'text-green-500' if data.price_change_percentage_24h > 0 }}">{{ '+' if data.price_change_percentage_24h > 0 }}{{ data.price_change_percentage_24h | round(2) }}%</span>
                 </div>
               </li>
             </ul>

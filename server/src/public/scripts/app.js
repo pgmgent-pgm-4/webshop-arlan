@@ -28,6 +28,6 @@ const marquee = (which, time, direction) => {
 
 let master = gsap
 	.timeline()
-	.add(marquee(no01, 50, dirFromLeft), 1)
+	.add(marquee(no01, 50, dirFromRight), 1)
 
 // =============================

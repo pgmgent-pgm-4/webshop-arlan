@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <base href="../">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/main.css">
+  <title>Document</title>
+ </head>
+ <body>
+ {% set detailData = { image: 'null', name: 'Cookie Statement', padding: '16' } %}
+  {% include "./partials/detailheader.njk" %}
+  <main>
+   <section class="bg-site-bg overflow-hidden py-8">
+    <div class="container bg-white p-6 md:w-9/12 m-auto rounded-2xl shadow-card mb-16">
+     <h3 class="font-bold pt-4">1. What are cookies?</h3>
+     <p class="pt-4">Cookies are text files containing small amounts of information which are downloaded to your device when you visit a website. Cookies are then sent back to the originating website on each subsequent visit, or to another website that recognises that cookie. Cookies are widely used because they allow a website to recognise a user’s device and therefore allow enhanced functionality.</p>
+     <p class="pt-4">You can find out more information about cookies at: www.allaboutcookies.org some definitions used in this note are provided at part 5 below.</p>
+     <h3 class="font-bold pt-4">2. How does Arlan use cookies?</h3>
+     <p class="pt-4">Arlan uses cookies for the following purposes:</p>
+     <p class="pt-4">to compile statistical data on the use of our website and its functioning, so that we can monitor and improve it;</p>
+     <p class="pt-4">to facilitate users’ ability to navigate through our website, including to allow registered users to access secure parts of our website; and to allow us to share our web pages via social media platforms.</p>
+     <h3 class="font-bold pt-4">3. Which cookies does Arlan use?</h3>
+     <p class="pt-4">A full list of all the cookies we use is in the table at part 6 below.</p>
+     <p class="pt-4">Please note that we are auditing the use of these cookies and the table will be updated as we make ongoing changes.</p>
+     <h3 class="font-bold pt-4">4. How to control cookies?</h3>
+     <p class="pt-4">If you do not wish to receive cookies you can set your web browser to restrict or block them. All modern browsers allow you to change your cookie settings, typically be found in the 'options' or 'preferences' menu of your browser. In order to understand these settings, the following link may be helpful: www.aboutcookies.org</p>
+     <p class="pt-4">If you disable cookies you will not be able to use all the interactive features of our website.</p>
+     <h3 class="font-bold pt-4">5. Definitions</h3>
+     <p class="pt-4">First Party/ Third Party cookies</p>
+     <p class="pt-4">Refers to the web domain placing the cookie. First-party cookies are those set by a website that is being visited by the user at the time – the website displayed in the URL window. Third party cookies are cookies that are set by a domain other than that of the website being visited by the user. If a user visits a website and another entity sets the cookie through that website, this would be a third-party cookie.</p>
+     <p class="pt-4">Persistent cookies</p>
+     <p class="pt-4">These cookies remain on a user’s device for the period of time specified in the cookie. They are activated each time that the user visits the website that created that particular cookie.</p>
+     <p class="pt-4">Session cookies</p>
+     <p class="pt-4">These cookies allow website operators to link the actions of a user during a browser session. A browser session starts when a user opens the browser window and finishes when they close the browser window. Session cookies are created temporarily. Once you close the browser, all session cookies are deleted.</p>
+     <p class="pt-4">Pixel tags</p>
+     <p class="pt-4">A pixel tag is not technically a cookie but is a similar type of technology placed on a website or within the body of an email for the purpose of tracking activity on websites, or when emails are opened or accessed, and is often used in combination with cookies. Information collected is anonymous.</p>
+    </div>
+   </section>
+  </main>
+  {% include "./partials/footer.njk" %}
+  <script src="https://kit.fontawesome.com/eefbba8f9b.js" crossorigin="anonymous"></script>
+  <script src="scripts/gsap/gsap.min.js" crossorigin="anonymous"></script>
+  <script src="scripts/chartjs.js" crossorigin="anonymous"></script>
+  <script src="scripts/app.js"></script>
+ </body>
+</html>

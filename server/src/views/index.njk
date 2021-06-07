@@ -5,16 +5,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/flickity.min.css" media="screen">
   <title>Document</title>
  </head>
  <body>
   {% include "./partials/header.njk" %}
   <main>
-   <section class="bg-site-bg overflow-hidden py-8">
+   <section class="bg-site-bg py-8">
     <h2 class="text-xl  w-full text-left md:text-center md:text-4xl lg:text-5xl font-bold py-8">Discover trending coins</h2>
     <p class="hidden md:block text-center w-2/5 m-auto mb-10">We offer a wide range of coins you can buy on our site. Below
      are some of the ones that have received the most attention from our customers.</p>
-    <div class="container mx-auto flex py-10">
+    <div id="cards__container" class="container overflow-hidden mx-auto w-full flex py-10" data-flickity='{ "cellAlign": "left", "contain": true }'>
      {% for data in tickerData -%}
       <a href="detail/{{ data.id }}" class="flex flex-wrap min-w-1/4 bg-white text-gray-800 p-5 rounded-2xl shadow-card ml-5">
        <div class="flex w-full justify-between items-center">
@@ -30,6 +31,8 @@
      {%- endfor %}
     </div>
    </section>
+   <button id="slideBack">Back</button>
+   <button id="slideNext">Next</button>
    <section class="bg-site-secondary-bg py-8">
     <div class="whyarlan bg-site-secondary-bg container mx-auto">
      <h2 class="text-xl text-left md:text-center md:text-4xl lg:text-5xl font-bold py-8">Why choose Arlan?</h2>
@@ -99,6 +102,7 @@
   <script src="https://kit.fontawesome.com/eefbba8f9b.js" crossorigin="anonymous"></script>
   <script src="scripts/gsap/gsap.min.js" crossorigin="anonymous"></script>
   <script src="scripts/chartjs.js" crossorigin="anonymous"></script>
+  <script src="scripts/flickity.min.js"></script>
   <script src="scripts/app.js"></script>
  </body>
 </html>

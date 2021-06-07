@@ -31,3 +31,30 @@ let master = gsap
 	.add(marquee(no01, 50, dirFromRight), 1)
 
 // =============================
+
+let next = document.getElementById('slideNext');
+next.onclick = function () {
+    var container = document.getElementById('cards__container');
+    sideScroll(container,'right',30,400,50);
+};
+
+let back = document.getElementById('slideBack');
+back.onclick = function () {
+    var container = document.getElementById('cards__container');
+    sideScroll(container,'left',30,400,50);
+};
+
+function sideScroll(element,direction,speed,distance,step){
+    scrollAmount = 0;
+    var slideTimer = setInterval(function(){
+        if(direction == 'left'){
+            element.scrollLeft -= step;
+        } else {
+            element.scrollLeft += step;
+        }
+        scrollAmount += step;
+        if(scrollAmount >= distance){
+            window.clearInterval(slideTimer);
+        }
+    }, speed);
+}

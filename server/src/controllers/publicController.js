@@ -14,9 +14,7 @@ const getHome = async(req, res, next) => {
 	}
 };
 
-
 const getDetail = async(req, res, next) => {
- console.log(req.params);
  const { id } = req.params;
  const DETAIL_URL = `https://api.coingecko.com/api/v3/coins/${id}?tickers=true&market_data=true&community_data=false&developer_data=true&sparkline=true`;
 	try {
@@ -58,9 +56,22 @@ const getCookieStatement = async(req, res, next) => {
 	}
 };
 
+const getTypes = async(req, res, next) => {
+	try {
+		const data = await fetch(URL);
+		const response = await data.json();
+		res.render('cookies', {
+			tickerData: response.slice(0, 30),
+		});
+	} catch (error) {
+		throw new Error(error, next);
+	}
+};
+
 module.exports = {
 	getHome,
 	getDetail,
 	getOverview,
 	getCookieStatement,
+	getTypes,
 };

@@ -9,5 +9,7 @@ router.get('/detail/:id', publicController.getDetail);
 
 router.get('/overview', publicController.getOverview);
 
+router.get('/cookies', publicController.getCookieStatement);
+
 // export default Router;
 module.exports = router;

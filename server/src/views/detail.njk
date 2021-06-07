@@ -34,16 +34,24 @@
   <script src="scripts/chartjs.js" crossorigin="anonymous"></script>
   <script src="scripts/app.js"></script>
   <script>
-   var ctx = document.getElementById('{{ detailData.id }}Chart').getContext('2d');
-   const labels = [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday'
+   const days = [
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saterday',
+    'sunday'
    ];
+   let goBackDays = 7;
+   let today = new Date();
+   let daysSorted = [];
+   for (let i = 0; i < goBackDays; i++) {
+    let newDate = new Date(today.setDate(today.getDate() - 1));
+    daysSorted.push(days[newDate.getDay()]);
+   }
+   let daysFlipped = daysSorted.reverse();
+   let ctx = document.getElementById('{{ detailData.id }}Chart').getContext('2d');
    let data = [{{ detailData.market_data.sparkline_7d.price }}];
    data = data.map(result => {
     return result * 0.82;
@@ -51,7 +59,7 @@
    var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-     labels: labels,
+     labels: daysFlipped,
      datasets: [
       {
        data: data,

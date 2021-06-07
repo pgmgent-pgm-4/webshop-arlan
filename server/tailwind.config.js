@@ -12,6 +12,7 @@ module.exports = {
 				'site-secondary-bg': '#EFF3FF'
 			},
 			minWidth: {
+    '18': '18rem',
 				'1/4': '25%',
 				'1/2': '50%'
 			},

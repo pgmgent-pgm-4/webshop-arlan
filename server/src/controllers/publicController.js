@@ -60,7 +60,7 @@ const getTypes = async(req, res, next) => {
 	try {
 		const data = await fetch(URL);
 		const response = await data.json();
-		res.render('cookies', {
+		res.render('types', {
 			tickerData: response.slice(0, 30),
 		});
 	} catch (error) {

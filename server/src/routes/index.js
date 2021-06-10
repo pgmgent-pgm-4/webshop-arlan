@@ -13,5 +13,7 @@ router.get('/cookies', publicController.getCookieStatement);
 
 router.get('/types_of_crypto', publicController.getTypes);
 
+router.get('/about_us', publicController.getAboutUs);
+
 // export default Router;
 module.exports = router;

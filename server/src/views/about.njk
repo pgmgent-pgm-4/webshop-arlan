@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <base href="../">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/main.css">
+  <title>Document</title>
+ </head>
+ <body>
+ {% set detailData = { image: 'null', name: 'Cookie Statement', padding: '16' } %}
+  {% include "./partials/aboutheader.njk" %}
+  <main>
+   <section class="bg-site-secondary-bg"> 
+    <div class="container m-auto">
+     <ul class="py-8 md:flex">
+      <li class="text-center py-8">
+       <img class="m-auto" src="media/about/worldwide.png" alt="available worldwide"/>
+       <h4 class="text-xl p-4 font-bold">Available worldwide</h4>
+       <p class="text-lg">Arlan is accessible in the whole world, so you can buy cryptocurrencies anywhere you are.</p>
+      </li>
+
+      <li class="text-center py-8">
+       <img class="m-auto" src="media/about/support.png" alt="available worldwide"/>
+       <h4 class="text-xl p-4 font-bold">24/7 support</h4>
+       <p class="text-lg">You can contact our support at any time and they will be there to help you with whatever you need.</p>
+      </li>
+
+      <li class="text-center py-8">
+       <img class="m-auto" src="media/about/uptodate.png" alt="available worldwide"/>
+       <h4 class="text-xl p-4 font-bold">Up to date</h4>
+       <p class="text-lg">We update our inventory of crypto's weekly so you always have the latest coins available.</p>
+      </li>
+     </ul>
+    </div>
+   </section>
+
+   <section class="container m-auto">
+    <h2 class="text-2xl text-left font-bold py-4 md:text-center md:text-6xl md:pt-10">Our story</h2>
+    <p class="hidden md:block text-center text-xl pb-16">A lot of thought and decisions</p>
+    <div class="md:flex items-center pb-8">
+     <div class="md:w-1/2">
+      <img class="hidden md:block" src="media/about/beginning.png" alt="the beginning"/>
+     </div>
+     <div class="md:w-1/2">
+      <h3 class="text-xl font-bold py-2 md:text-2xl">The beginning</h3>
+      <p class="text-lg">The founders of Arlan noticed how hard it actually is to begin investing in cryptocurrencies and wanted to make it easier for the regular person, and so Arlan was born. A platform designed to demystify the secrets around the trading of crypto's.</p>
+     </div>
+    </div>
+    <div class="md:flex items-center pb-8">
+     <div class="md:w-1/2">
+      <h3 class="text-xl font-bold py-2 md:text-2xl">Invest to grow</h3>
+      <p class="text-lg">People saw the success of crypto and decided to invest. The Arlan website launched around the summer of 2021. We make it easy for people to invest in crypto and analyse the prices.</p>
+     </div>
+     <div>
+      <img class="hidden md:block"  src="media/about/invest.png" alt="invest to grow"/>
+     </div>
+    </div>
+    <div class="md:flex items-center pb-8">
+     <div>
+      <img class="hidden md:block"  src="media/about/founding.png" alt="founding arlan"/>
+     </div>
+     <div class="md:w-1/2">
+      <h3 class="text-xl font-bold py-2 md:text-2xl">Founding Arlan</h3>
+      <p class="text-lg">Arlan started with 2 founders, over time we intend to grow our company and keep improving our services, add new features and continue to make crypto trading accessible for everyone.</p>
+     </div>
+    </div>
+   </section>
+   {% include "./partials/corevalues.njk" %}
+  </main>
+  {% include "./partials/footer.njk" %}
+  <script src="https://kit.fontawesome.com/eefbba8f9b.js" crossorigin="anonymous"></script>
+  <script src="scripts/gsap/gsap.min.js" crossorigin="anonymous"></script>
+  <script src="scripts/chartjs.js" crossorigin="anonymous"></script>
+  <script src="scripts/app.js"></script>
+ </body>
+</html>

@@ -68,10 +68,23 @@ const getTypes = async(req, res, next) => {
 	}
 };
 
+const getAboutUs = async(req, res, next) => {
+	try {
+		const data = await fetch(URL);
+		const response = await data.json();
+		res.render('about', {
+			tickerData: response.slice(0, 30),
+		});
+	} catch (error) {
+		throw new Error(error, next);
+	}
+};
+
 module.exports = {
 	getHome,
 	getDetail,
 	getOverview,
 	getCookieStatement,
 	getTypes,
+	getAboutUs,
 };

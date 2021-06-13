@@ -6,19 +6,19 @@ import database from '../index';
 
 database.connect();
 
-const getCategoryRelations = (n = 50, categories, products) => {
- const orders = [];
+const getCategoryRelations = (categories, products) => {
+ const product_has_categories = [];
  products.forEach(product => {
   let category = categories[Math.floor(Math.random() * categories.length)];
-  orders.push({
+  product_has_categories.push({
    createdAt: new Date(),
    updatedAt: new Date(),
-   ProductId: product.id,
    CategoryId: category.id,
+   ProductId: product.id,
   });
  })
  
- return orders;
+ return product_has_categories;
 };
 
 export default {

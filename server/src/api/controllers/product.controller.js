@@ -21,14 +21,16 @@ Get a specific product
 const getProductById = async (req, res, next) => {
 	try {
 		// Get productId parameter
-		const { productId } = req.params;
-  console.log(String(productId));
+		let { productId } = req.params;
+  productId = productId.toUpperCase();
+  console.log(productId);
 		// Get specific product from database
 		const product = await database.Product.findAll({
 			where: {
-				id: productId.toUpperCase(),
+				id: productId,
 			},
 		});
+
 		// Send response
 		res.status(200).json(product);
 	} catch (error) {

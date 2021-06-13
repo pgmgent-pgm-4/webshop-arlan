@@ -20,7 +20,7 @@
      class="mx-auto w-full flex overflow-hidden py-10"
      data-flickity='{ "cellAlign": "left", "contain": true }'>
      {% for data in tickerData -%}
-      <a href="detail/{{ data.id }}" class="flex flex-wrap min-w-18 bg-white text-gray-800 p-5 rounded-2xl shadow-card ml-5">
+      <a href="products/{{ data.id }}" class="flex flex-wrap min-w-18 bg-white text-gray-800 p-5 rounded-2xl shadow-card ml-5">
        <div class="flex w-full justify-between items-center">
         <div class="flex content-center">
          <img src="{{ data.image }}" class="w-7"/>

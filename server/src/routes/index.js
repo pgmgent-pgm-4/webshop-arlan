@@ -1,11 +1,12 @@
 import express from 'express';
 import publicController from '../controllers/publicController';
+import * as productController from '../api/controllers/product.controller' 
 
 const router = express.Router();
 
 router.get('/', publicController.getHome);
 
-router.get('/detail/:id', publicController.getDetail);
+router.get('/products/:productId', publicController.getDetail);
 
 router.get('/overview', publicController.getOverview);
 

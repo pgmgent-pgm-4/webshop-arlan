@@ -1,4 +1,5 @@
 import fetch from 'node-fetch';
+import database from '../database/';
 
 const URL = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&page=1&sparkline=false';
 
@@ -15,15 +16,26 @@ const getHome = async(req, res, next) => {
 };
 
 const getDetail = async(req, res, next) => {
- const { id } = req.params;
- const DETAIL_URL = `https://api.coingecko.com/api/v3/coins/${id}?tickers=true&market_data=true&community_data=false&developer_data=true&sparkline=true`;
-	try {
-		const tickerData = await fetch(URL);
-		const tickerResponse = await tickerData.json();
+ try {
+  // Get productId parameter
+  const { productId } = req.params;
+  console.log(req.params);
+  const DETAIL_URL = `https://api.coingecko.com/api/v3/coins/${productId}?tickers=true&market_data=true&community_data=false&developer_data=true&sparkline=true`;
+  console.log(DETAIL_URL)
+  const tickerData = await fetch(URL);
+  const tickerResponse = await tickerData.json();
+  const detailData = await fetch(DETAIL_URL);
+  const detailResponse = await detailData.json();
+  // Get specific product from database
+  const product = await database.Product.findAll({
+   where: {
+    id: productId.toUpperCase(),
+   },
+  });
 
-		const detailData = await fetch(DETAIL_URL);
-		const detailResponse = await detailData.json();
-		res.render('detail', {
+  console.log('Received product from database:', JSON.stringify(product));
+
+  res.render('detail', {
 			tickerData: tickerResponse.slice(0, 30),
 			detailData: detailResponse,
 		});

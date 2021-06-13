@@ -18,6 +18,7 @@ const getProducts = (n = 50, cryptoList) => {
  const products = [];
  for (let i = 0; i < n; i++) {
   let name = getName(cryptoList, i).replace(/ /g,'');
+  name = name.toUpperCase();
   if (!pastCoinNames.includes(name)) {
    products.push({
     id: name,
@@ -35,7 +36,7 @@ export default {
  up: async (queryInterface, Sequelize) => {
   await queryInterface.bulkInsert(
    database.Product.tableName,
-   getProducts(3700, cryptoList),
+   getProducts(3600, cryptoList),
    {},
   );
  },

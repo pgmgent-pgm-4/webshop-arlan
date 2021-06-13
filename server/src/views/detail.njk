@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
- <head>
-  <base href="../">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/main.css">
-  <title>Document</title>
- </head>
- <body>
+{% extends "base.njk" %}
+{% block content %}
   {% include "./partials/detailheader.njk" %}
   <main>
    <section class="bg-site-bg py-8">
@@ -63,62 +54,4 @@
     </div>
     </section>
   </main>
-  {% include "./partials/footer.njk" %}
-  <script src="https://kit.fontawesome.com/eefbba8f9b.js" crossorigin="anonymous"></script>
-  <script src="scripts/gsap/gsap.min.js" crossorigin="anonymous"></script>
-  <script src="scripts/chartjs.js" crossorigin="anonymous"></script>
-  <script src="scripts/app.js"></script>
-  <script>
-   const days = [
-    'monday',
-    'tuesday',
-    'wednesday',
-    'thursday',
-    'friday',
-    'saterday',
-    'sunday'
-   ];
-   let goBackDays = 7;
-   let today = new Date();
-   let daysSorted = [];
-   for (let i = 0; i < goBackDays; i++) {
-    let newDate = new Date(today.setDate(today.getDate() - 1));
-    daysSorted.push(days[newDate.getDay()]);
-   }
-   let daysFlipped = daysSorted.reverse();
-   let ctx = document.getElementById('{{ detailData.id }}Chart').getContext('2d');
-   let data = [{{ detailData.market_data.sparkline_7d.price }}];
-   data = data.map(result => {
-    return result * 0.82;
-   });
-   var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-     labels: daysFlipped,
-     datasets: [
-      {
-       data: data,
-       backgroundColor: ['rgba(2, 49, 145, 0.3)'],
-       borderColor: ['rgb(2, 49, 145)'],
-       borderWidth: 1,
-       fill: true,
-       tension: 0.5
-      }
-     ]
-    },
-    options: {
-     plugins: {
-      legend: {
-       display: false
-      }
-     },
-     scales: {
-      y: {
-       beginAtZero: false
-      }
-     }
-    }
-   });
-  </script>
- </body>
-</html>
+{% endblock %}

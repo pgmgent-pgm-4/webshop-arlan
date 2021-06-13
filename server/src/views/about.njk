@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
- <head>
-  <base href="../">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/main.css">
-  <title>Document</title>
- </head>
- <body>
+{% extends "base.njk" %}
+{% block content %}
  {% set detailData = { image: 'null', name: 'Cookie Statement', padding: '16' } %}
   {% include "./partials/aboutheader.njk" %}
   <main>
@@ -69,10 +60,4 @@
    </section>
    {% include "./partials/corevalues.njk" %}
   </main>
-  {% include "./partials/footer.njk" %}
-  <script src="https://kit.fontawesome.com/eefbba8f9b.js" crossorigin="anonymous"></script>
-  <script src="scripts/gsap/gsap.min.js" crossorigin="anonymous"></script>
-  <script src="scripts/chartjs.js" crossorigin="anonymous"></script>
-  <script src="scripts/app.js"></script>
- </body>
-</html>
+{% endblock %}

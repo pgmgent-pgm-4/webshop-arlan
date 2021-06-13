@@ -10,7 +10,7 @@ export default (sequelize) => {
 
 	Payment.init(
 		{
-			data_of_payment: DataTypes.DATE
+			date_of_payment: DataTypes.DATE
 		},
 		{
 			sequelize,

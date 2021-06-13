@@ -15,6 +15,17 @@
       <p>{{ detailData.description.en.slice(0, 500) | safe }}...
        <a class="text-blue-500" href="{{ detailData.links.homepage[0] }}">Learn more</a>
       </p>
+      <div class="mt-8">
+        <div class="buyButtons flex justify-between mb-4">
+          <button onclick="buyClickHandler(100)" class="bg-site-primary text-white p-2 px-6 text-center text-xl rounded-xl hover:bg-site-secondary">€+100</button>
+          <button onclick="buyClickHandler(500)" class="buyTwo bg-site-primary text-white p-2 px-6 text-center text-xl rounded-xl hover:bg-site-secondary">€+500</button>
+          <button onclick="buyClickHandler(1000)" class="buyThree bg-site-primary text-white p-2 px-6 text-center text-xl rounded-xl hover:bg-site-secondary">€+1000</button>
+        </div>
+        <button onclick="resetPrice(100)" class="bg-site-primary text-white p-2 px-6 text-center text-xl rounded-xl hover:bg-site-secondary">Reset price</button>
+        <form>
+          <button data-id="0" class="bg-site-primary text-white p-2 px-6 text-center text-xl rounded-xl hover:bg-site-secondary w-full">Buy €<span class="buyAmount">0</span> {{detailData.name}}</button>
+        </form>
+      </div>
      </div>
     </div>
    </section>

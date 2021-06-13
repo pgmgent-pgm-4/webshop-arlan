@@ -1,3 +1,26 @@
+// let amount = parseInt(document.querySelector('.buyAmount').innerHTML);
+// console.log(typeof amount);
+
+// document.getElementById('buyOne').addEventListener('click', () => {
+// 	amount += 100;
+// 	document.querySelector('.buyAmount').innerHTML = amount;
+// });
+
+let price = 0;
+
+const buyClickHandler = (amount) => {
+	price += amount;
+	document.querySelector('.buyAmount').innerHTML = price;
+	document.querySelector('.buyAmount').dataset.id = price;
+};
+
+const resetPrice = (amount) => {
+	document.querySelector('.buyAmount').innerHTML = 0;
+	document.querySelector('.buyAmount').dataset.id = 0;
+	price = 0;
+};
+
+
 gsap.set(".ticker", { y: 0 });
 
 let boxWidth = 200,
@@ -58,4 +81,3 @@ function sideScroll(element,direction,speed,distance,step){
         }
     }, speed);
 }
-

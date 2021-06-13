@@ -91,6 +91,9 @@ router.post('/payments', paymentController.createPayment);
 router.put('/payments', paymentController.updatePayment);
 router.delete('/payments', paymentController.deletePayment);
 
+router.get('/products', productController.getProducts);
+router.get('/products/:id', productController.getProductById);
+
 router.get('/productReviews', productReviewsController.getProductReviews);
 router.get('/productReviews/:productReviewId', productReviewsController.getProductReviewById);
 router.post('/productReviews', productReviewsController.createProductReview);

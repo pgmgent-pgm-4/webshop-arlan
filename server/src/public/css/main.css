@@ -32764,7 +32764,7 @@ video {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  margin-left: -65rem;
+  margin-left: -100vw;
 }
 
 .ticker__data--item {

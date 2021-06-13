@@ -10,9 +10,11 @@ export default (sequelize) => {
 	}
 
 	Product.init({
-		name: DataTypes.STRING,
-		product_id: DataTypes.UUIDV4,
-
+  id: {
+   type: DataTypes.TEXT,
+   primaryKey: true,
+   autoIncrement: false
+  }
 	}, {
 		sequelize,
 		modelName: 'Product',

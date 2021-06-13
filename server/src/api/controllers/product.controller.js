@@ -22,10 +22,11 @@ const getProductById = async (req, res, next) => {
 	try {
 		// Get productId parameter
 		const { productId } = req.params;
+  console.log(String(productId));
 		// Get specific product from database
 		const product = await database.Product.findAll({
 			where: {
-				id: productId,
+				id: productId.toUpperCase(),
 			},
 		});
 		// Send response

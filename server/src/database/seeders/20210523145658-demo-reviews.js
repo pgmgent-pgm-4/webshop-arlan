@@ -29,6 +29,6 @@ export default {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete(database.Product_reviews.tableName, null, {});
+    await queryInterface.bulkDelete(database.Product_review.tableName, null, {});
   },
 };

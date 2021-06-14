@@ -1,0 +1,12 @@
+{% extends "base.njk" %}
+{% block content %}
+ {% set detailData = { image: 'null', name: 'Profile', padding: '16' } %}
+  {% include "./partials/detailheader.njk" %}
+  <main>
+   <section class="bg-site-bg"> 
+    <div class="container m-auto">
+     {{profileData | dump}}
+    </div>
+   </section>
+  </main>
+{% endblock %}

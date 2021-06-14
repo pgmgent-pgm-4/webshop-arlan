@@ -13,6 +13,7 @@ import * as productController from '../controllers/product.controller';
 import * as paymentController from '../controllers/payment.controller';
 import * as orderController from '../controllers/order.controller';
 import * as userController from '../controllers/user.controller';
+import * as profileController from '../controllers/profile.controller';
 import * as authenticationController from '../../actions/auth';
 import { passport } from '../../middleware';
 
@@ -84,6 +85,12 @@ router.get('/users/:userId', userController.getUserById);
 router.post('/users', userController.createUser);
 router.put('/users/:userId', userController.updateUser);
 router.delete('/users/:userId', userController.deleteUser);
+
+router.get('/profiles', profileController.getProfiles);
+router.get('/profiles/:userId', profileController.getProfileById);
+router.post('/profiles', profileController.createProfile);
+router.put('/profiles/:userId', profileController.updateProfile);
+router.delete('/profiles/:userId', profileController.deleteProfile);
 
 router.get('/payments', paymentController.getPayments);
 router.get('/payments/:paymentId', paymentController.getPaymentById);

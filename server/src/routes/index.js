@@ -8,6 +8,8 @@ router.get('/', publicController.getHome);
 
 router.get('/products/:productId', publicController.getDetail);
 
+router.get('/profile/:userId', publicController.getProfile);
+
 router.get('/overview', publicController.getOverview);
 
 router.get('/cookies', publicController.getCookieStatement);

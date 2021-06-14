@@ -30,7 +30,10 @@ const resetPrice = (amount) => {
 
 const pageReady = () => {
  if (localStorage.getItem('UserId')) {
-  document.getElementById('profileIcon').classList.remove('hidden');
+  let userId = localStorage.getItem('UserId');
+  let profileIcon = document.getElementById('profileIcon');
+  profileIcon.classList.remove('hidden');
+  profileIcon.setAttribute('href', `/profile/${userId}`)
   document.getElementById('loginText').classList.add('hidden');
  };
 }

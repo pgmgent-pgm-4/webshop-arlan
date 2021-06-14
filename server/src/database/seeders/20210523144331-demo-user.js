@@ -12,7 +12,7 @@ const getUsers = (n = 20) => {
   for (let i = 0; i < n; i++) {
     users.push({
      username: faker.internet.userName(),
-     password: bcrypt.hashSync(faker.internet.password(), 10),
+     password: bcrypt.hashSync('testPassword', 10),
      email: faker.internet.email(),
      createdAt: new Date(),
      updatedAt: new Date(),

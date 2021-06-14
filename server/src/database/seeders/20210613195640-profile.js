@@ -16,7 +16,6 @@ const getProfiles = (users, orders) => {
  users.forEach(user => {
   let order = orders[Math.floor(Math.random() * orders.length)];
   profiles.push({
-   user_id: uuidv4(),
    firstname: faker.name.firstName(),
    lastname: faker.name.lastName(),
    date_of_birth: faker.date.between(1950, 2005),

@@ -5,7 +5,6 @@ export default (sequelize) => {
 		static associate(models) {
 			this.belongsToMany(models.Category, { through: 'product_has_categories' });
 			this.hasMany(models.Favorite);
-			
 		}
 	}
 

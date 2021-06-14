@@ -28,6 +28,15 @@ const resetPrice = (amount) => {
  price = 0;
 };
 
+const pageReady = () => {
+ if (localStorage.getItem('UserId')) {
+  document.getElementById('profileIcon').classList.remove('hidden');
+  document.getElementById('loginText').classList.add('hidden');
+ };
+}
+
+document.addEventListener('DOMCContentLoaded', pageReady())
+
 const handleLogin = async () => {
  let username = document.getElementById('username').value;
  let password = document.getElementById('password').value;

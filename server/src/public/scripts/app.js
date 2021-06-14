@@ -1,6 +1,17 @@
 let price = 0;
 const loginModal = document.querySelector('.loginModal');
 const registerModal = document.querySelector('.registerModal');
+const shoppingCart = document.querySelector('.shoppingCart');
+
+const openCart = () => {
+  shoppingCart.style.display = 'block';
+}
+
+const closeCart = () => {
+  console.log(shoppingCart);
+  shoppingCart.style.display = 'none';
+  shoppingCart.classList.add('hidden');
+}
 
 const openRegisterModal = () => {
  loginModal.style.display = 'none';

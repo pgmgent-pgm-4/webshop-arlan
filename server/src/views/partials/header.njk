@@ -12,8 +12,9 @@
      <!-- Mobile menu button -->
      <div class="flex md:hidden">
       <button
+       onclick="openHamburgerMenu()"
        type="button"
-       class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none
+       class="text-white dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none
         focus:text-gray-600 dark:focus:text-gray-400"
        aria-label="toggle menu">
        <svg viewbox="0 0 24 24" class="w-6 h-6 fill-current">
@@ -45,7 +46,7 @@
        href="/about">About</a>
      </div>
     </div>
-    <div class="flex justify-center">
+    <div class="flex justify-center items-center">
      <a id="profileIcon" class="hidden relative text-white dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300 pr-4" href="#">
       <svg
        class="w-5 h-5"
@@ -58,27 +59,115 @@
        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6
        4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83
        1.418-.832 1.664h10z"
-       
        stroke="currentColor"
         stroke-width="0.5"
         stroke-linecap="round"
-        stroke-linejoin="round"/>/>
-       
-      </svg>
-     </a>
-     <a class="relative text-white dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300 pr-4" href="#">
-      <svg class="w-5 h-5" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-       <path
-        d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.70711 15.2929C4.07714 15.9229 4.52331 17 5.41421 17H17M17 17C15.8954
-         17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM9 19C9 20.1046
-         8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19Z"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
         stroke-linejoin="round"/>
       </svg>
-      <span class="absolute top-0 left-0 p-1 text-xs text-white bg-site-primary rounded-full"></span>
      </a>
+     <div onclick="openCart()" class="relative">
+      <a class="relative text-white dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300 pr-4" href="#">
+        <svg class="w-5 h-5" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.70711 15.2929C4.07714 15.9229 4.52331 17 5.41421 17H17M17 17C15.8954
+          17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM9 19C9 20.1046
+          8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19Z"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <div class="shoppingCart hidden absolute bg-white h-96 w-96 top-0 right-5 rounded-2xl">
+        <div onclick="closeCart()" class="absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
+          <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+            <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+          </svg>
+        </div>
+        <h2 class="text-site-primary text-center text-2xl font-bold my-4">Shopping Cart</h2>
+        <form>
+          <ul class="w-11/12 m-auto h-56 overflow-y-scroll">
+            <li class="flex items-center py-2 border-b-2 border-gray-400">
+              <div class="flex justify-between w-full items-center">
+                <div class="flex items-center">
+                  <div class="w-16 h-16 bg-black mr-2">
+                    <img src="#" alt="COIN"/>
+                  </div>
+                  <div class="float-right">
+                    <h3 class="font-bold text-xl">Bitcoin</h3>
+                    <span>BTC</span>
+                  </div>
+                </div>
+                <div>
+                  <h4>€5000</h4>
+                  <p>0.3BTC</p>
+                </div>
+              </div>
+            </li>
+            <li class="flex items-center py-2 border-b-2 border-gray-400">
+              <div class="flex justify-between w-full items-center">
+                <div class="flex items-center">
+                  <div class="w-16 h-16 bg-black mr-2">
+                    <img src="#" alt="COIN"/>
+                  </div>
+                  <div class="float-right">
+                    <h3 class="font-bold text-xl">Bitcoin</h3>
+                    <span>BTC</span>
+                  </div>
+                </div>
+                <div>
+                  <h4>€5000</h4>
+                  <p>0.3BTC</p>
+                </div>
+              </div>
+            </li>
+            <li class="flex items-center py-2 border-b-2 border-gray-400">
+              <div class="flex justify-between w-full items-center">
+                <div class="flex items-center">
+                  <div class="w-16 h-16 bg-black mr-2">
+                    <img src="#" alt="COIN"/>
+                  </div>
+                  <div class="float-right">
+                    <h3 class="font-bold text-xl">Bitcoin</h3>
+                    <span>BTC</span>
+                  </div>
+                </div>
+                <div>
+                  <h4>€5000</h4>
+                  <p>0.3BTC</p>
+                </div>
+              </div>
+            </li>
+            <li class="flex items-center py-2 border-b-2 border-gray-400">
+              <div class="flex justify-between w-full items-center">
+                <div class="flex items-center">
+                  <div class="w-16 h-16 bg-black mr-2">
+                    <img src="#" alt="COIN"/>
+                  </div>
+                  <div class="float-right">
+                    <h3 class="font-bold text-xl">Bitcoin</h3>
+                    <span>BTC</span>
+                  </div>
+                </div>
+                <div>
+                  <h4>€5000</h4>
+                  <p>0.3BTC</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <div class="flex justify-between w-11/12 m-auto pt-2">
+            <div>
+              <h2 class="text-xl font-bold">Total:</h2>
+            </div>
+            <div>
+              <p class="text-xl font-bold">€20000</p>
+            </div>
+          </div>
+          <button onclick="gotoCheckout()" class="bg-site-primary text-white px-2 py-2 w-11/12 m-auto rounded-xl ml-4 mt-2 font-bold">Checkout</button>
+        </form>
+      </div>
+     </div>
      <a id="loginText" class="relative text-white dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300">
       <button onclick="openModal()">Login</button>
      </a>

@@ -17,26 +17,52 @@
     <h2 class="text-xl w-full text-left md:text-center md:text-4xl lg:text-5xl font-bold py-8">Discover trending coins</h2>
     <p class="hidden md:block text-center w-2/5 m-auto mb-10">We offer a wide range of coins you can buy on our site. Below
      are some of the ones that have received the most attention from our customers.</p>
-    <div
-     id="cards__container"
-     class="mx-auto w-full flex overflow-hidden py-10"
-     data-flickity='{ "cellAlign": "left", "contain": true }'>
-     {% for data in tickerData -%}
-      <a href="/products/{{data.id}}" class="flex flex-wrap min-w-18 bg-white text-gray-800 p-5 rounded-2xl shadow-card ml-5">
-       <div class="flex w-full justify-between items-center">
-        <div class="flex content-center">
-         <img src="{{ data.image }}" class="w-7"/>
-         <h3 class="text-lg font-bold ml-3">{{ data.name }}</h3>
+     <div class="relative">
+        <div
+        id="cards__container"
+        class="mx-auto w-full flex overflow-hidden py-10"
+        data-flickity='{ "cellAlign": "left", "contain": true }'>
+        {% for data in tickerData -%}
+        <a href="/products/{{data.id}}" class="flex flex-wrap min-w-18 bg-white text-gray-800 p-5 rounded-2xl shadow-card ml-5">
+        <div class="flex w-full justify-between items-center">
+            <div class="flex content-center">
+            <img src="{{ data.image }}" class="w-7"/>
+            <h3 class="text-lg font-bold ml-3">{{ data.name }}</h3>
+            </div>
+            <h3 class="text-sm font-bold uppercase">{{ data.symbol }}</h3>
         </div>
-        <h3 class="text-sm font-bold uppercase">{{ data.symbol }}</h3>
-       </div>
-       <p class="w-full font-bold text-3xl pt-6">€{{ data.current_price | round(5) }}</p>
-       <p class="w-full text-sm text-red-500 {{ 'text-green-500' if data.price_change_percentage_24h > 0 }}">{{ '+' if data.price_change_percentage_24h > 0 }}{{ data.price_change_percentage_24h | round(2) }}% in the past 24 hours</p>
-      </a>
-     {%- endfor %}
+        <p class="w-full font-bold text-3xl pt-6">€{{ data.current_price | round(5) }}</p>
+        <p class="w-full text-sm text-red-500 {{ 'text-green-500' if data.price_change_percentage_24h > 0 }}">{{ '+' if data.price_change_percentage_24h > 0 }}{{ data.price_change_percentage_24h | round(2) }}% in the past 24 hours</p>
+        </a>
+        {%- endfor %}
+        <button id="slideBack" class="absolute top-0 bottom-0 left-6 w-12 border-none">
+        <svg class="rotate-180 fill-current text-site-primary" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" transform='rotate(180)' x="0px" y="0px"
+        viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+            <g>
+            <g>
+                <path d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z M335.083,271.083
+                L228.416,377.749c-4.16,4.16-9.621,6.251-15.083,6.251c-5.461,0-10.923-2.091-15.083-6.251c-8.341-8.341-8.341-21.824,0-30.165
+                L289.835,256l-91.584-91.584c-8.341-8.341-8.341-21.824,0-30.165s21.824-8.341,30.165,0l106.667,106.667
+                C343.424,249.259,343.424,262.741,335.083,271.083z"/>
+            </g>
+            </g>
+        </svg>
+        </button>
+        <button id="slideNext" class="absolute block top-0 bottom-0 right-6 w-12 border-none">
+          <svg class="fill-current text-site-primary" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+            <g>
+              <g>
+                <path d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z M335.083,271.083
+                    L228.416,377.749c-4.16,4.16-9.621,6.251-15.083,6.251c-5.461,0-10.923-2.091-15.083-6.251c-8.341-8.341-8.341-21.824,0-30.165
+                    L289.835,256l-91.584-91.584c-8.341-8.341-8.341-21.824,0-30.165s21.824-8.341,30.165,0l106.667,106.667
+                    C343.424,249.259,343.424,262.741,335.083,271.083z"/>
+              </g>
+            </g>
+          </svg>
+        </button>
+        </div>
     </div>
-    <button id="slideBack">Back</button>
-    <button id="slideNext">Next</button>
    </section>
    {% include "./partials/corevalues.njk" %}
    <section class="bg-site-bg overflow-hidden py-8">

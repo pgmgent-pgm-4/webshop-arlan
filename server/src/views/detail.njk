@@ -5,26 +5,29 @@
   {% include "./partials/detailheader.njk" %}
   <main>
    <section class="bg-site-bg py-8">
-    <div class="flex justify-around mx-auto container">
-     <div class="chart__container w-3/4 bg-white text-gray-800 p-5 rounded-2xl shadow-card">
+    <div class="flex flex-col lg:flex-row justify-around mx-auto container">
+     <div class="chart__container w-full lg:w-3/4 bg-white text-gray-800 p-5 rounded-2xl shadow-card">
       <h2 class="text-2xl w-full font-extrabold">{{ detailData.name }} rate</h2>
       <p class="w-full font-bold text-3xl pt-1">€{{ detailData.market_data.current_price.eur | round(5) }}</p>
       <p class="w-full text-sm mb-3 text-red-500 {{ 'text-green-500' if detailData.market_data.price_change_percentage_24h > 0 }}">{{ '+' if detailData.market_data.price_change_percentage_24h > 0 }}{{ detailData.market_data.price_change_percentage_24h | round(2) }}% in the past 24 hours</p>
       <canvas style="position: relative; height:45vh; width:100%" id="{{ detailData.id }}Chart"></canvas>
      </div>
-     <div class="flex flex-col ml-5 w-1/3 bg-white text-gray-800 p-5 rounded-2xl shadow-card">
-      <h2 class="text-2xl w-full font-extrabold">About {{ detailData.name }}</h2>
-      <p>{{ detailData.description.en.slice(0, 500) | safe }}...
-       <a class="text-blue-500" href="{{ detailData.links.homepage[0] }}">Learn more</a>
-      </p>
+     <div class="flex flex-col w-full justify-between lg:w-1/3 lg:ml-8 bg-white text-gray-800 p-5 rounded-2xl shadow-card">
+      <div>
+        <h2 class="text-2xl w-full font-extrabold">About {{ detailData.name }}</h2>
+        <p>{{ detailData.description.en.slice(0, 500) | safe }}...
+          <a class="text-blue-500" href="{{ detailData.links.homepage[0] }}">Learn more</a>
+        </p>
+        </div>
       <div class="mt-8">
-        <div class="buyButtons flex flex-wrap justify-between mb-2">
-          <button onclick="buyClickHandler(100)" class="buyButton bg-site-primary text-white p-2 px-6 text-center text-xl rounded-xl block hover:bg-site-secondary">€+100</button>
-          <button onclick="buyClickHandler(500)" class="buyButton bg-site-primary text-white p-2 px-6 text-center text-xl rounded-xl hover:bg-site-secondary">€+500</button>
-          <button onclick="buyClickHandler(1000)" class="buyButton bg-site-primary text-white p-2 px-6 text-center text-xl rounded-xl hover:bg-site-secondary">€+1000</button>
+        <div class="buyButtons flex flex-wrap justify-between mb-2 lg:mb-0 xl:mb-2">
+          <button onclick="buyClickHandler(10)" class="sm:w-1/5 lg:w-2/5 lg:mb-2 buyButton 2xl:w-1/5 bg-site-primary text-white px-1 py-2 text-center text-xl rounded-xl block hover:bg-site-secondary">€+10</button>
+          <button onclick="buyClickHandler(100)" class="sm:w-1/5 lg:w-2/5 lg:mb-2 buyButton 2xl:w-1/5 bg-site-primary text-white px-1 py-2 text-center text-xl rounded-xl block hover:bg-site-secondary">€+100</button>
+          <button onclick="buyClickHandler(500)" class="sm:w-1/5 lg:w-2/5 lg:mb-2 buyButton 2xl:w-1/5 bg-site-primary text-white px-1 py-2 text-center text-xl rounded-xl block hover:bg-site-secondary">€+500</button>
+          <button onclick="buyClickHandler(1000)" class="sm:w-1/5 lg:w-2/5 lg:mb-2 buyButton 2xl:w-1/5 bg-site-primary text-white px-1 py-2 text-center text-xl rounded-xl block hover:bg-site-secondary">€+1000</button>
         </div>
         <form onclick="handleSubmit({{ detailData.market_data.current_price.eur | round(5)}})" onsubmit="return false">
-          <button data-id="0" class="bg-site-primary text-white p-2 px-6 mb-4 text-center text-xl rounded-xl hover:bg-site-secondary w-full">Buy €<span class="buyAmount">0</span> {{detailData.name}}</button>
+          <button data-id="0" class="bg-site-primary text-white p-2 px-6 mb-2 text-center text-xl rounded-xl hover:bg-site-secondary w-full">Buy €<span class="buyAmount">0</span> {{detailData.name}}</button>
         </form>
           <div>
             <button onclick="resetPrice(100)" class="bg-red-500 text-white p-2 px-6 text-center text-xl rounded-xl hover:bg-red-700 w-full">Reset price</button>

@@ -28,6 +28,10 @@ const resetPrice = (amount) => {
  price = 0;
 };
 
+const makeFavorite = () => {
+ console.log('wollah')
+}
+
 const pageReady = () => {
  if (localStorage.getItem('UserId')) {
   let userId = localStorage.getItem('UserId');
@@ -143,29 +147,31 @@ let master = gsap
 
 // =============================
 
-let next = document.getElementById('slideNext');
-next.onclick = function () {
- var container = document.getElementById('cards__container');
- sideScroll(container, 'right', 30, 400, 50);
-};
+if (window.location.pathname === '/') {
+ let next = document.getElementById('slideNext');
+ next.onclick = function () {
+  var container = document.getElementById('cards__container');
+  sideScroll(container, 'right', 30, 400, 50);
+ };
 
-let back = document.getElementById('slideBack');
-back.onclick = function () {
- var container = document.getElementById('cards__container');
- sideScroll(container, 'left', 30, 400, 50);
-};
+ let back = document.getElementById('slideBack');
+ back.onclick = function () {
+  var container = document.getElementById('cards__container');
+  sideScroll(container, 'left', 30, 400, 50);
+ };
 
-function sideScroll(element, direction, speed, distance, step) {
- scrollAmount = 0;
- var slideTimer = setInterval(function () {
-  if (direction == 'left') {
-   element.scrollLeft -= step;
-  } else {
-   element.scrollLeft += step;
-  }
-  scrollAmount += step;
-  if (scrollAmount >= distance) {
-   window.clearInterval(slideTimer);
-  }
- }, speed);
+ function sideScroll(element, direction, speed, distance, step) {
+  scrollAmount = 0;
+  var slideTimer = setInterval(function () {
+   if (direction == 'left') {
+    element.scrollLeft -= step;
+   } else {
+    element.scrollLeft += step;
+   }
+   scrollAmount += step;
+   if (scrollAmount >= distance) {
+    window.clearInterval(slideTimer);
+   }
+  }, speed);
+ }
 }

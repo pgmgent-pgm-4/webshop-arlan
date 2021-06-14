@@ -21,6 +21,11 @@ const resetPrice = (amount) => {
  price = 0;
 };
 
+const handleLogin = async () => {
+ let email = document.getElementById('email-address'); 
+ console.log(email.value)
+}
+
 const handleSubmit = async (currentPrice) => {
  const data = await fetch(`http://localhost:8080/api/orders`, {
   method: 'POST',

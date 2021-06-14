@@ -29,7 +29,7 @@ const isValidPassword = async (user, password) => {
 const LocalStrategy = passportLocal.Strategy;
 passport.use(
 	new LocalStrategy(
-		{ usernameField: 'username', passwordField: 'password' },
+		{ emailField: 'email', passwordField: 'password' },
 		async (username, password, done) => {
 			try {
 				// get user by username

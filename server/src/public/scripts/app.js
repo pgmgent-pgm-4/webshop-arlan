@@ -1,4 +1,13 @@
 let price = 0;
+const modal = document.querySelector('.modal');
+
+const openModal = () => {
+    modal.style.display = 'block';
+}
+
+const closeLogin = () => {
+    modal.style.display = 'none';
+}
 
 const buyClickHandler = (amount) => {
 	price += amount;

@@ -1,19 +1,3 @@
-const modal = document.querySelector('.modal');
-modal.style.display = 'none';
-
-const closeLogin = () => {
-	console.log('test');
-	modal.style.display = 'none';
-};
-
-const remove = () => {
-	if (modal.style.display === "none") {
-		modal.style.display = "block";
-	} else {
-		modal.style.display = "none";
-	}
-};
-
 let price = 0;
 
 const buyClickHandler = (amount) => {
@@ -27,6 +11,26 @@ const resetPrice = (amount) => {
 	document.querySelector('.buyAmount').dataset.id = 0;
 	price = 0;
 };
+
+const handleSubmit = async (currentPrice) => {
+ const data = await fetch(`http://localhost:8080/api/orders`, {
+  method: 'POST',
+  headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+   date: Date.now(),
+   price: price,
+   order_value: price / currentPrice,
+   status: 'pending', 
+   UserId: 5
+  })
+ })
+ const response = await data.json();
+ console.log(response);
+ return false
+}
 
 
 gsap.set(".ticker", { y: 0 });

@@ -7,8 +7,6 @@ export default (sequelize) => {
 		}
 	}
 
- console.log(DataTypes.UUIDV4)
-
 	Category.init(
 		{
 			name: DataTypes.STRING,

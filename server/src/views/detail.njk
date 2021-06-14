@@ -29,7 +29,7 @@
           <button onclick="buyClickHandler(500)" class="sm:w-1/5 lg:w-2/5 lg:mb-2 buyButton 2xl:w-1/5 bg-site-primary text-white px-1 py-2 text-center text-xl rounded-xl block hover:bg-site-secondary">€+500</button>
           <button onclick="buyClickHandler(1000)" class="sm:w-1/5 lg:w-2/5 lg:mb-2 buyButton 2xl:w-1/5 bg-site-primary text-white px-1 py-2 text-center text-xl rounded-xl block hover:bg-site-secondary">€+1000</button>
         </div>
-        <form onclick="handleSubmit({{ detailData.market_data.current_price.eur | round(5)}})" onsubmit="return false">
+        <form onclick="handleSubmit({{ detailData.market_data.current_price.eur | round(5)}}, '{{ detailData.name }}', '{{ detailData.image.large }}')" onsubmit="return false">
           <button data-id="0" class="bg-site-primary text-white p-2 px-6 mb-2 text-center text-xl rounded-xl hover:bg-site-secondary w-full">Buy €<span class="buyAmount">0</span> {{detailData.name}}</button>
         </form>
           <div>

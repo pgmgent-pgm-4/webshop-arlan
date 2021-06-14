@@ -3,7 +3,12 @@ const loginModal = document.querySelector('.loginModal');
 const registerModal = document.querySelector('.registerModal');
 let shoppingCart = document.querySelector('.shoppingCart');
 
+const capitalizeFirstLetter = (string) => {
+ return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 const openCart = () => {
+ fillShoppingCartItems();
  shoppingCart.classList.remove('hidden');
  shoppingCart.classList.add('block');
 }
@@ -39,6 +44,32 @@ const resetPrice = () => {
  document.querySelector('.buyAmount').dataset.id = 0;
  price = 0;
 };
+
+const fillShoppingCartItems = () => {
+ let shoppingCart = document.getElementById('shoppingCartList');
+ let shoppingOrder = JSON.parse(localStorage.getItem('ShoppingCart'));
+ if (shoppingOrder && shoppingOrder.length) {
+  let content = shoppingOrder.map(order => {
+   return `<li class="flex items-center py-2 border-b-2 border-gray-400">
+   <div class="flex justify-between w-full items-center">
+    <div class="flex items-center">
+     <div class="w-16 h-16">
+      <img src="${order.image}" alt="${order.id}"/>
+     </div>
+     <div>
+      <h3 class="font-bold text-xl">${capitalizeFirstLetter(order.name)}</h3>
+     </div>
+    </div>
+    <div class="text-right pr-2">
+     <h4>€${order.price}</h4>
+     <p>${order.order_value.toFixed(6)}</p>
+    </div>
+   </div>
+  </li>`
+  }).join('');
+  shoppingCart.innerHTML = content;
+ }
+}
 
 const makeFavorite = async (ProductId) => {
  const UserId = Number(localStorage.getItem('UserId'));
@@ -109,10 +140,9 @@ const handleRegister = async () => {
   })
  });
  const response = await data.json();
- console.log(response);
 }
 
-const handleSubmit = async (currentPrice) => {
+const handleSubmit = async (currentPrice, productName, productImage) => {
  const currentUser = Number(localStorage.getItem('UserId'));
  const data = await fetch(`http://localhost:8080/api/orders`, {
   method: 'POST',
@@ -132,6 +162,8 @@ const handleSubmit = async (currentPrice) => {
  let existingEntries = JSON.parse(localStorage.getItem('ShoppingCart'));
  if (existingEntries == null) existingEntries = [];
  let entry = response;
+ entry.name = productName.toUpperCase();
+ entry.image = productImage;
  existingEntries.push(entry);
  localStorage.setItem('ShoppingCart', JSON.stringify(existingEntries));
  return false

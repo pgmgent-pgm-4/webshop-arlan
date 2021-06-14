@@ -105,3 +105,4 @@ dist
 
 *.css
 .sqlite3
+server/src/data/agency.sqlite3

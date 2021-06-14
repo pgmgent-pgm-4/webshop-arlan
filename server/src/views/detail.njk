@@ -4,15 +4,23 @@
  {% include "./partials/registerModal.njk" %}
   {% include "./partials/detailheader.njk" %}
   <main>
-   <section class="bg-site-bg py-8">
+   <section class="bg-site-bg py-14">
     <div class="flex flex-col lg:flex-row justify-around mx-auto container">
-     <div class="chart__container mb-12 lg:mb-0 w-full lg:w-3/4 bg-white text-gray-800 p-5 rounded-2xl shadow-card">
+     <div class="chart__container relative mb-12 lg:mb-0 w-full lg:w-3/4 bg-white text-gray-800 p-5 rounded-2xl shadow-card">
+        <div onclick="makeFavorite()" class="absolute -top-5 -right-5 hover:cursor-pointer">
+          <svg class="fill-current text-site-primary w-14 h-14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="512" height="512">
+            <g>
+              <path d="M322.978,182.357c-12.58,0-24.407,4.898-33.303,13.794L256,229.826l-33.675-33.675   c-8.896-8.896-20.723-13.794-33.303-13.794c-12.579,0-24.406,4.898-33.302,13.794s-13.794,20.723-13.794,33.302   c0,12.58,4.898,24.407,13.794,33.303l99.92,100.639l100.639-100.639c18.362-18.363,18.362-48.241,0-66.604   C347.384,187.256,335.557,182.357,322.978,182.357z"/>
+              <path d="M437.02,74.98C388.667,26.629,324.38,0,256,0S123.333,26.629,74.98,74.98C26.629,123.333,0,187.62,0,256   s26.629,132.667,74.98,181.02C123.333,485.371,187.62,512,256,512s132.667-26.629,181.02-74.98C485.371,388.667,512,324.38,512,256   S485.371,123.333,437.02,74.98z M377.492,283.969L255.564,405.896L134.47,283.931c-30.021-30.021-30.021-78.933,0.038-108.992   c30.058-30.059,78.971-30.061,109.03,0L256,187.4l12.462-12.462c30.06-30.062,78.973-30.06,109.03,0   C407.552,204.998,407.552,253.909,377.492,283.969z"/>
+            </g>
+          </svg>
+        </div>
       <h2 class="text-2xl w-full font-extrabold">{{ detailData.name }} rate</h2>
       <p class="w-full font-bold text-3xl pt-1">€{{ detailData.market_data.current_price.eur | round(5) }}</p>
       <p class="w-full text-sm mb-3 text-red-500 {{ 'text-green-500' if detailData.market_data.price_change_percentage_24h > 0 }}">{{ '+' if detailData.market_data.price_change_percentage_24h > 0 }}{{ detailData.market_data.price_change_percentage_24h | round(2) }}% in the past 24 hours</p>
       <canvas style="position: relative; height:45vh; width:100%" id="{{ detailData.id }}Chart"></canvas>
      </div>
-     <div class="flex flex-col w-full justify-between lg:w-1/3 lg:ml-8 bg-white text-gray-800 p-5 rounded-2xl shadow-card">
+     <div class="flex flex-col w-full justify-between lg:w-1/3 lg:ml-10 bg-white text-gray-800 p-5 rounded-2xl shadow-card">
       <div>
         <h2 class="text-2xl w-full font-extrabold">About {{ detailData.name }}</h2>
         <p>{{ detailData.description.en.slice(0, 500) | safe }}...

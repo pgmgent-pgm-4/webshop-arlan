@@ -42,12 +42,15 @@ const getDetail = async(req, res, next) => {
 };
 
 const getProfile = async(req, res, next) => {
+	const tickerData = await fetch(URL);
+  const tickerResponse = await tickerData.json();
  const { userId } = req.params;
  const profileResponse = await fetch(`${BASE_URL}/profiles/${userId}`);
  const profile = await profileResponse.json();
  const favoritesResponse = await fetch(`${BASE_URL}/favorites/${userId}`);
  const favorites = await favoritesResponse.json();
  res.render('profile', {
+		tickerData: tickerResponse.slice(0, 30),
   profileData: profile,
   favoritesData: favorites
  })

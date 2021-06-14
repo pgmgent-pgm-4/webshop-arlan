@@ -6,7 +6,7 @@
   <main>
    <section class="bg-site-bg py-8">
     <div class="flex flex-col lg:flex-row justify-around mx-auto container">
-     <div class="chart__container w-full lg:w-3/4 bg-white text-gray-800 p-5 rounded-2xl shadow-card">
+     <div class="chart__container mb-12 lg:mb-0 w-full lg:w-3/4 bg-white text-gray-800 p-5 rounded-2xl shadow-card">
       <h2 class="text-2xl w-full font-extrabold">{{ detailData.name }} rate</h2>
       <p class="w-full font-bold text-3xl pt-1">€{{ detailData.market_data.current_price.eur | round(5) }}</p>
       <p class="w-full text-sm mb-3 text-red-500 {{ 'text-green-500' if detailData.market_data.price_change_percentage_24h > 0 }}">{{ '+' if detailData.market_data.price_change_percentage_24h > 0 }}{{ detailData.market_data.price_change_percentage_24h | round(2) }}% in the past 24 hours</p>

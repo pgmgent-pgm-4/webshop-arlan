@@ -83,7 +83,7 @@
        </svg>
       </a>
      </div>
-     <div class="shoppingCart hidden absolute bg-white h-96 w-96 top-0 right-5 rounded-2xl">
+     <div class="shoppingCart z-10 hidden absolute bg-white h-96 w-96 top-0 right-5 rounded-2xl">
       <div
        onclick="closeCart()"
        class="absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
@@ -195,7 +195,7 @@
     </div>
    </div>
   </header>
-  <div class="ticker">
+  <div class="ticker z-0">
    <div class="ticker__data flex">
     {% for data in tickerData -%}
      <ul class="ticker__data--item text-white">

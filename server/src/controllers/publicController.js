@@ -1,4 +1,5 @@
 import fetch from 'node-fetch';
+import database from '../database';
 
 const URL = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&page=1&sparkline=false';
 const BASE_URL = 'http://localhost:8080/api';
@@ -19,13 +20,13 @@ const getDetail = async(req, res, next) => {
  try {
   // Get productId parameter
   const { productId } = req.params;
-  const DETAIL_URL = `https://api.coingecko.com/api/v3/coins/${productId}?tickers=true&market_response1=true&community_response=false&developer_response=true&sparkline=true`;
+  const DETAIL_URL = `https://api.coingecko.com/api/v3/coins/${productId}?tickers=true&market_response=true&community_response=false&developer_response=true&sparkline=true`;
   const tickerData = await fetch(URL);
   const tickerResponse = await tickerData.json();
   const detailData = await fetch(DETAIL_URL);
   const detailResponse = await detailData.json();
-  // Get specific product from response1base
-  const product = await response1base.Product.findAll({
+  // Get specific product from database
+  const product = await database.Product.findAll({
    where: {
     id: productId.toUpperCase(),
    },

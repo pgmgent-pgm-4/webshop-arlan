@@ -5,7 +5,7 @@
   {% include "./partials/header.njk" %}
   <main>
      <div class="container mx-auto flex flex-wrap py-10">
-     <div class="flex w-full justify-between">
+     <div class="hidden md:flex w-full justify-between">
       <p class="uppercase font-bold ml-3">name</p>
       <div class="flex">
        <p class="uppercase mr-14 font-bold">price</p>
@@ -13,24 +13,30 @@
       </div>
      </div>
      {% for data in tickerData.slice(0, 30) -%}
+     <a href="/products/{{ data.id }}">
       <div class="flex flex-wrap items-center justify-between min-w-full bg-white text-gray-800 rounded-2xl mb-3 shadow-card">
        <div class="flex items-center pl-5">
-        <div class="flex content-center">
-         <img src="{{ data.image }}" class="w-7"/>
-         <h3 class="text-lg font-bold ml-3">{{ data.name }}</h3>
+        <div class="flex content-center items-center">
+          <div>
+            <img src="{{ data.image }}" class="w-7"/>
+          </div>
+          <div>
+            <h3 class="block md:inline text-lg font-bold ml-3">{{ data.name }}</h3>
+            <h3 class="block md:inline text-sm ml-3 font-bold uppercase">{{ data.symbol }}</h3>
+          </div>
         </div>
-        <h3 class="text-sm ml-2 font-bold uppercase">{{ data.symbol }}</h3>
        </div>
        <div class="flex items-center">
-        <div class="flex">
+        <div class="inline md:flex">
          <p class="font-bold pr-5 text-xl text-right">€{{ data.current_price | round(5) }}</p>
-         <p class="w-full text-xl mr-8 text-red-500 {{ 'text-green-500' if data.price_change_percentage_24h > 0 }}">{{ '+' if data.price_change_percentage_24h > 0 }}{{ data.price_change_percentage_24h | round(2) }}%</p>
+         <p class="w-auto text-lg text-right md:w-full pr-5 md:text-xl md:mr-8 text-red-500 {{ 'text-green-500' if data.price_change_percentage_24h > 0 }}">{{ '+' if data.price_change_percentage_24h > 0 }}{{ data.price_change_percentage_24h | round(2) }}%</p>
         </div>
-        <a href="/detail/{{ data.id }}" class="bg-site-primary hover:bg-blue-700 text-white font-bold py-4 px-4 rounded-r-2xl">
+        <a href="/products/{{ data.id }}" class="hidden md:block md:bg-site-primary hover:bg-blue-700 text-white font-bold py-4 px-4 rounded-r-2xl">
          Buy
         </a>
        </div>
       </div>
+      </a>
      {%- endfor %}
     </div>
   </main>

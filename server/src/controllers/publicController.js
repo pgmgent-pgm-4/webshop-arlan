@@ -43,10 +43,13 @@ const getDetail = async(req, res, next) => {
 
 const getProfile = async(req, res, next) => {
  const { userId } = req.params;
- const response = await fetch(`${BASE_URL}/profiles/${userId}`);
- const profile = await response.json();
+ const profileResponse = await fetch(`${BASE_URL}/profiles/${userId}`);
+ const profile = await profileResponse.json();
+ const favoritesResponse = await fetch(`${BASE_URL}/favorites/${userId}`);
+ const favorites = await favoritesResponse.json();
  res.render('profile', {
-  profileData: profile
+  profileData: profile,
+  favoritesData: favorites
  })
 }
 

@@ -71,7 +71,8 @@ router.get('/products', productController.getProducts);
 router.get('/products/:productId', productController.getProductById);
 
 router.get('/favorites', favoriteController.getFavortes);
-router.get('/favorites/:favoriteId', favoriteController.getFavoriteById);
+router.get('/favorites/all/:favoriteId', favoriteController.getFavoriteById);
+router.get('/favorites/:userId', favoriteController.getFavoritesByUserId);
 router.post('/favorites', favoriteController.createFavorite);
 
 router.get('/orders', passport, orderController.getOrders);

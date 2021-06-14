@@ -84,6 +84,7 @@ const handleRegister = async () => {
 }
 
 const handleSubmit = async (currentPrice) => {
+ const currentUser = Number(localStorage.getItem('UserId'));
  const data = await fetch(`http://localhost:8080/api/orders`, {
   method: 'POST',
   headers: {
@@ -95,7 +96,7 @@ const handleSubmit = async (currentPrice) => {
    price: price,
    order_value: price / currentPrice,
    status: 'pending',
-   UserId: 5
+   UserId: currentUser
   })
  });
  const response = await data.json();

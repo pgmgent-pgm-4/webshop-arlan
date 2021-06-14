@@ -37,6 +37,32 @@ const getFavoriteById = async (req, res, next) => {
 };
 
 /*
+Get a specific favorite
+*/
+const getFavoritesByUserId = async (req, res, next) => {
+	try {
+		// Get favoriteId parameter
+		const { userId } = req.params;
+		// Get specific favorite from database
+  const favorites = await database.Favorite.findAll({
+   where: {
+    UserId: userId 
+   }
+  });
+
+		// Favorite with orderId was not found.
+		if (!favorites) {
+			throw new HTTPError(`Could not found the favorite with id ${userId}!`, 404);
+		}
+		// Send response
+		res.status(200).json(favorites);
+	} catch (error) {
+		handleHTTPError(error, next);
+	}
+};
+
+
+/*
 Create a new favorite
 */
 const createFavorite = async (req, res, next) => {
@@ -52,4 +78,4 @@ const createFavorite = async (req, res, next) => {
 	}
 };
 
-export { getFavoriteById, getFavortes, createFavorite };
+export { getFavoriteById, getFavortes, createFavorite, getFavoritesByUserId };

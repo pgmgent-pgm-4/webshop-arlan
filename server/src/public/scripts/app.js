@@ -22,14 +22,28 @@ const buyClickHandler = (amount) => {
  document.querySelector('.buyAmount').dataset.id = price;
 };
 
-const resetPrice = (amount) => {
+const resetPrice = () => {
  document.querySelector('.buyAmount').innerHTML = 0;
  document.querySelector('.buyAmount').dataset.id = 0;
  price = 0;
 };
 
-const makeFavorite = () => {
- console.log('wollah')
+const makeFavorite = async (ProductId) => {
+  const UserId = Number(localStorage.getItem('UserId'));
+  ProductId = ProductId.toUpperCase();
+  const response = await fetch('http://localhost:8080/api/favorites', {
+   method: 'POST',
+   headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+   },
+   body: JSON.stringify({
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
+    UserId: UserId,
+    ProductId: ProductId,
+   })
+ }); 
 }
 
 const pageReady = () => {
@@ -40,9 +54,8 @@ const pageReady = () => {
   profileIcon.setAttribute('href', `/profile/${userId}`)
   document.getElementById('loginText').classList.add('hidden');
  };
-}
-
-document.addEventListener('DOMCContentLoaded', pageReady())
+}; 
+document.addEventListener('DOMCContentLoaded', pageReady());
 
 const handleLogin = async () => {
  let username = document.getElementById('username').value;

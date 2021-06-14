@@ -7,14 +7,9 @@
    <section class="bg-site-bg py-14">
     <div class="flex flex-col lg:flex-row justify-around mx-auto container">
      <div class="chart__container relative mb-12 lg:mb-0 w-full lg:w-3/4 bg-white text-gray-800 p-5 rounded-2xl shadow-card">
-        <div onclick="makeFavorite()" class="absolute -top-5 -right-5 hover:cursor-pointer">
-          <svg class="fill-current text-site-primary w-14 h-14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="512" height="512">
-            <g>
-              <path d="M322.978,182.357c-12.58,0-24.407,4.898-33.303,13.794L256,229.826l-33.675-33.675   c-8.896-8.896-20.723-13.794-33.303-13.794c-12.579,0-24.406,4.898-33.302,13.794s-13.794,20.723-13.794,33.302   c0,12.58,4.898,24.407,13.794,33.303l99.92,100.639l100.639-100.639c18.362-18.363,18.362-48.241,0-66.604   C347.384,187.256,335.557,182.357,322.978,182.357z"/>
-              <path d="M437.02,74.98C388.667,26.629,324.38,0,256,0S123.333,26.629,74.98,74.98C26.629,123.333,0,187.62,0,256   s26.629,132.667,74.98,181.02C123.333,485.371,187.62,512,256,512s132.667-26.629,181.02-74.98C485.371,388.667,512,324.38,512,256   S485.371,123.333,437.02,74.98z M377.492,283.969L255.564,405.896L134.47,283.931c-30.021-30.021-30.021-78.933,0.038-108.992   c30.058-30.059,78.971-30.061,109.03,0L256,187.4l12.462-12.462c30.06-30.062,78.973-30.06,109.03,0   C407.552,204.998,407.552,253.909,377.492,283.969z"/>
-            </g>
-          </svg>
-        </div>
+        <button onclick="makeFavorite('{{detailData.name}}')" class="absolute -top-5 -right-5 bg-site-primary p-4 rounded-full hover:bg-site-secondary">
+          <svg id="heart" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(255, 255, 255);transform:;-ms-filter:"><path d="M12,4.595c-1.104-1.006-2.512-1.558-3.996-1.558c-1.578,0-3.072,0.623-4.213,1.758c-2.353,2.363-2.352,6.059,0.002,8.412 l7.332,7.332c0.17,0.299,0.498,0.492,0.875,0.492c0.322,0,0.609-0.163,0.792-0.409l7.415-7.415 c2.354-2.354,2.354-6.049-0.002-8.416c-1.137-1.131-2.631-1.754-4.209-1.754C14.513,3.037,13.104,3.589,12,4.595z M18.791,6.205 c1.563,1.571,1.564,4.025,0.002,5.588L12,18.586l-6.793-6.793C3.645,10.23,3.646,7.776,5.205,6.209 c0.76-0.756,1.754-1.172,2.799-1.172s2.035,0.416,2.789,1.17l0.5,0.5c0.391,0.391,1.023,0.391,1.414,0l0.5-0.5 C14.719,4.698,17.281,4.702,18.791,6.205z"></path></svg>
+        </button>
       <h2 class="text-2xl w-full font-extrabold">{{ detailData.name }} rate</h2>
       <p class="w-full font-bold text-3xl pt-1">€{{ detailData.market_data.current_price.eur | round(5) }}</p>
       <p class="w-full text-sm mb-3 text-red-500 {{ 'text-green-500' if detailData.market_data.price_change_percentage_24h > 0 }}">{{ '+' if detailData.market_data.price_change_percentage_24h > 0 }}{{ detailData.market_data.price_change_percentage_24h | round(2) }}% in the past 24 hours</p>

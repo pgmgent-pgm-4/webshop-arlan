@@ -8,16 +8,16 @@
   <link rel="stylesheet" href="css/main.css">
   <title>Arlan</title>
  </head>
- <body onload="onLoadProfile()">
+ <body onload="pageReady()">
  {% block content %}
   
  {% endblock %}
 
    {% include "./partials/footer.njk" %}
+   <script src="scripts/app.js"></script>
   <script src="https://kit.fontawesome.com/eefbba8f9b.js" crossorigin="anonymous"></script>
   <script src="scripts/gsap/gsap.min.js" crossorigin="anonymous"></script>
   <script src="scripts/chartjs.js" crossorigin="anonymous"></script>
-  <script src="scripts/app.js"></script>
   <script>
    const days = [
     'monday',

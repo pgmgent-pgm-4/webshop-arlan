@@ -102,7 +102,7 @@ const getContact = async(req, res, next) => {
 	try {
 		const response = await fetch(URL);
 		const data = await response.json();
-		res.render('about', {
+		res.render('contact', {
 			tickerData: data.slice(0, 30),
 		});
 	} catch (error) {

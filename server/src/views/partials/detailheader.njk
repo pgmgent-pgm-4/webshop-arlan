@@ -46,25 +46,45 @@
           </div>
         </div>
         <div class="flex justify-center">
-          <a class="relative text-white dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300 pr-4" href="#">
-            <svg class="w-5 h-5" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.70711 15.2929C4.07714 15.9229 4.52331 17 5.41421 17H17M17 17C15.8954
-                  17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM9 19C9 20.1046
-                  8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19Z"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"/>
-            </svg>
-            <span class="absolute top-0 left-0 p-1 text-xs text-white bg-site-primary rounded-full"></span>
-          </a>
-          <a class="relative text-white dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300">
-            <button onclick="openModal()">login</button>
-          </a>
-        </div>
-      </div>
-    </nav>
+     <a id="profileIcon" class="hidden relative text-white dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300 pr-4" href="#">
+      <svg
+       class="w-5 h-5"
+       xmlns="http://www.w3.org/2000/svg"
+       width="16"
+       height="16"
+       fill="currentColor"
+       class="bi bi-person"
+       viewBox="0 0 16 16">
+       <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6
+       4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83
+       1.418-.832 1.664h10z"
+       
+       stroke="currentColor"
+        stroke-width="0.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>/>
+       
+      </svg>
+     </a>
+     <a class="relative text-white dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300 pr-4" href="#">
+      <svg class="w-5 h-5" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+       <path
+        d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.70711 15.2929C4.07714 15.9229 4.52331 17 5.41421 17H17M17 17C15.8954
+         17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM9 19C9 20.1046
+         8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19Z"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+      </svg>
+      <span class="absolute top-0 left-0 p-1 text-xs text-white bg-site-primary rounded-full"></span>
+     </a>
+     <a id="loginText" class="relative text-white dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300">
+      <button onclick="openModal()">Login</button>
+     </a>
+    </div>
+   </div>
+  </nav>
     <div class="container mx-auto pt-4">
     {% if detailData.image !== 'null' %}
       <img src="{{ detailData.image.large }}" alt="logo {{ detailData.id }}" class="m-auto w-3/12 lg:w-1/12 mb-6 md:w-2/12"/>

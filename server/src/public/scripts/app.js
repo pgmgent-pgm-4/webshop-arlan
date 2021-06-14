@@ -1,16 +1,17 @@
 let price = 0;
 const loginModal = document.querySelector('.loginModal');
 const registerModal = document.querySelector('.registerModal');
-const shoppingCart = document.querySelector('.shoppingCart');
+let shoppingCart = document.querySelector('.shoppingCart');
 
 const openCart = () => {
-  shoppingCart.style.display = 'block';
+ shoppingCart.classList.remove('hidden');
+ shoppingCart.classList.add('block');
 }
 
 const closeCart = () => {
-  console.log(shoppingCart);
-  shoppingCart.style.display = 'none';
-  shoppingCart.classList.add('hidden');
+ console.log(shoppingCart);
+ shoppingCart.classList.remove('block')
+ shoppingCart.classList.add('hidden');
 }
 
 const openRegisterModal = () => {
@@ -40,21 +41,21 @@ const resetPrice = () => {
 };
 
 const makeFavorite = async (ProductId) => {
-  const UserId = Number(localStorage.getItem('UserId'));
-  ProductId = ProductId.toUpperCase();
-  const response = await fetch('http://localhost:8080/api/favorites', {
-   method: 'POST',
-   headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-   },
-   body: JSON.stringify({
-    createdAt: Date.now(),
-    updatedAt: Date.now(),
-    UserId: UserId,
-    ProductId: ProductId,
-   })
- }); 
+ const UserId = Number(localStorage.getItem('UserId'));
+ ProductId = ProductId.toUpperCase();
+ const response = await fetch('http://localhost:8080/api/favorites', {
+  method: 'POST',
+  headers: {
+   'Accept': 'application/json',
+   'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+   createdAt: Date.now(),
+   updatedAt: Date.now(),
+   UserId: UserId,
+   ProductId: ProductId,
+  })
+ });
 }
 
 const pageReady = () => {
@@ -65,7 +66,7 @@ const pageReady = () => {
   profileIcon.setAttribute('href', `/profile/${userId}`)
   document.getElementById('loginText').classList.add('hidden');
  };
-}; 
+};
 document.addEventListener('DOMCContentLoaded', pageReady());
 
 const handleLogin = async () => {

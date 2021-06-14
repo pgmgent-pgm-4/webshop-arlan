@@ -1,10 +1,18 @@
-// let amount = parseInt(document.querySelector('.buyAmount').innerHTML);
-// console.log(typeof amount);
+const modal = document.querySelector('.modal');
+modal.style.display = 'none';
 
-// document.getElementById('buyOne').addEventListener('click', () => {
-// 	amount += 100;
-// 	document.querySelector('.buyAmount').innerHTML = amount;
-// });
+const closeLogin = () => {
+	console.log('test');
+	modal.style.display = 'none';
+};
+
+const remove = () => {
+	if (modal.style.display === "none") {
+		modal.style.display = "block";
+	} else {
+		modal.style.display = "none";
+	}
+};
 
 let price = 0;
 

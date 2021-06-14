@@ -1,12 +1,19 @@
 let price = 0;
-const modal = document.querySelector('.modal');
+const loginModal = document.querySelector('.loginModal');
+const registerModal = document.querySelector('.registerModal');
+
+const openRegisterModal = () => {
+    loginModal.style.display = 'none';
+    registerModal.style.display = 'block';
+}
 
 const openModal = () => {
-    modal.style.display = 'block';
+    loginModal.style.display = 'block';
 }
 
 const closeLogin = () => {
-    modal.style.display = 'none';
+    loginModal.style.display = 'none';
+    registerModal.style.display = 'none';
 }
 
 const buyClickHandler = (amount) => {

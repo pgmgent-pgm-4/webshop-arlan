@@ -1,6 +1,7 @@
 {% extends "base.njk" %}
 {% block content %}
  {% include "./partials/loginModal.njk" %}
+ {% include "./partials/registerModal.njk" %}
   {% include "./partials/detailheader.njk" %}
   <main>
    <section class="bg-site-bg py-8">
@@ -17,15 +18,17 @@
        <a class="text-blue-500" href="{{ detailData.links.homepage[0] }}">Learn more</a>
       </p>
       <div class="mt-8">
-        <div class="buyButtons flex justify-between mb-4">
-          <button onclick="buyClickHandler(100)" class="bg-site-primary text-white p-2 px-6 text-center text-xl rounded-xl hover:bg-site-secondary">€+100</button>
-          <button onclick="buyClickHandler(500)" class="bg-site-primary text-white p-2 px-6 text-center text-xl rounded-xl hover:bg-site-secondary">€+500</button>
-          <button onclick="buyClickHandler(1000)" class="bg-site-primary text-white p-2 px-6 text-center text-xl rounded-xl hover:bg-site-secondary">€+1000</button>
+        <div class="buyButtons flex flex-wrap justify-between mb-2">
+          <button onclick="buyClickHandler(100)" class="buyButton bg-site-primary text-white p-2 px-6 text-center text-xl rounded-xl block hover:bg-site-secondary">€+100</button>
+          <button onclick="buyClickHandler(500)" class="buyButton bg-site-primary text-white p-2 px-6 text-center text-xl rounded-xl hover:bg-site-secondary">€+500</button>
+          <button onclick="buyClickHandler(1000)" class="buyButton bg-site-primary text-white p-2 px-6 text-center text-xl rounded-xl hover:bg-site-secondary">€+1000</button>
         </div>
-        <button onclick="resetPrice(100)" class="bg-site-primary text-white p-2 px-6 text-center text-xl rounded-xl hover:bg-site-secondary">Reset price</button>
         <form onclick="handleSubmit({{ detailData.market_data.current_price.eur | round(5)}})" onsubmit="return false">
-          <button data-id="0" class="bg-site-primary text-white p-2 px-6 text-center text-xl rounded-xl hover:bg-site-secondary w-full">Buy €<span class="buyAmount">0</span> {{detailData.name}}</button>
+          <button data-id="0" class="bg-site-primary text-white p-2 px-6 mb-4 text-center text-xl rounded-xl hover:bg-site-secondary w-full">Buy €<span class="buyAmount">0</span> {{detailData.name}}</button>
         </form>
+          <div>
+            <button onclick="resetPrice(100)" class="bg-red-500 text-white p-2 px-6 text-center text-xl rounded-xl hover:bg-red-700 w-full">Reset price</button>
+          </div>
       </div>
      </div>
     </div>

@@ -1,0 +1,66 @@
+{% extends "base.njk" %}
+{% block content %}
+ {% set detailData = { image: 'null', name: 'Contact us', padding: '16' } %}
+  {% include "./partials/loginModal.njk" %}
+  {% include "./partials/registerModal.njk" %}
+  {% include "./partials/detailheader.njk" %}
+  <main>
+  <section class="bg-site-bg py-8">
+    <div class="mx-auto container md:flex">
+     <div class="contact__container mb-8 w-full md:mr-8 bg-white text-gray-800 p-5 rounded-2xl shadow-card">
+      <input class="mb-4 md:text-lg appearance-none relative block w-full px-3 py-2 border border-blue-300 placeholder-blue-300 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-site-primary focus:z-10 sm:text-sm" name="full-name" type="text" placeholder="Full Name"></input>
+      <input class="mb-4 md:text-lg appearance-none relative block w-full px-3 py-2 border border-blue-300 placeholder-blue-300 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-site-primary focus:z-10 sm:text-sm" name="email" type="email" placeholder="Email"></input>
+      <textarea class="h-40 md:h-60 md:text-lg resize-none mb-4 appearance-none relative block w-full px-3 py-2 border border-blue-300 placeholder-blue-300 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-site-primary focus:z-10 sm:text-sm" placeholder="Message"></textarea>
+      <button class="bg-site-primary text-white p-4 px-8 font-bold rounded-lg hover:bg-site-secondary">Send</button>
+     </div>
+
+     <div class="md:w-2/5">
+      <div class="mb-8 flex flex-col w-full bg-white text-gray-800 p-5 rounded-2xl shadow-card">
+       <h3 class="font-bold text-xl">Call us</h3>
+       <h4 class="font-bold text-lg">Inernational phone number</h4>
+       <p>+32780025931</p>
+       <p>Available 8am - 5pm CEST</p>
+      </div>
+      <div class="mb-8 flex flex-col w-full bg-white text-gray-800 p-5 rounded-2xl shadow-card">
+       <h3 class="font-bold text-xl">Email us</h3>
+       <p>support@arlan.co</p>
+       <p>Average response time is 2 workdays</p>
+      </div>
+      <div class="mb-8 flex flex-col w-full bg-white text-gray-800 p-5 rounded-2xl shadow-card">
+       <h3 class="font-bold text-xl">Social media</h3>
+       <ul class="flex justify-between mt-4">
+        <li class="w-12 text-site-primary">
+         <svg class="fill-current text-site-primary" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m437 0h-362c-41.351562 0-75 33.648438-75 75v362c0 41.351562 33.648438 75 75 75h151v-181h-60v-90h60v-61c0-49.628906 40.371094-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.351562 0 75-33.648438 75-75v-362c0-41.351562-33.648438-75-75-75zm0 0"/></svg>
+        </li>
+        <li class="w-12">
+         <svg class="fill-current text-site-primary" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 310 310" style="enable-background:new 0 0 310 310;" xml:space="preserve">
+         <g id="XMLID_826_">
+          <path id="XMLID_827_" d="M302.973,57.388c-4.87,2.16-9.877,3.983-14.993,5.463c6.057-6.85,10.675-14.91,13.494-23.73
+           c0.632-1.977-0.023-4.141-1.648-5.434c-1.623-1.294-3.878-1.449-5.665-0.39c-10.865,6.444-22.587,11.075-34.878,13.783
+           c-12.381-12.098-29.197-18.983-46.581-18.983c-36.695,0-66.549,29.853-66.549,66.547c0,2.89,0.183,5.764,0.545,8.598
+           C101.163,99.244,58.83,76.863,29.76,41.204c-1.036-1.271-2.632-1.956-4.266-1.825c-1.635,0.128-3.104,1.05-3.93,2.467
+           c-5.896,10.117-9.013,21.688-9.013,33.461c0,16.035,5.725,31.249,15.838,43.137c-3.075-1.065-6.059-2.396-8.907-3.977
+           c-1.529-0.851-3.395-0.838-4.914,0.033c-1.52,0.871-2.473,2.473-2.513,4.224c-0.007,0.295-0.007,0.59-0.007,0.889
+           c0,23.935,12.882,45.484,32.577,57.229c-1.692-0.169-3.383-0.414-5.063-0.735c-1.732-0.331-3.513,0.276-4.681,1.597
+           c-1.17,1.32-1.557,3.16-1.018,4.84c7.29,22.76,26.059,39.501,48.749,44.605c-18.819,11.787-40.34,17.961-62.932,17.961
+           c-4.714,0-9.455-0.277-14.095-0.826c-2.305-0.274-4.509,1.087-5.294,3.279c-0.785,2.193,0.047,4.638,2.008,5.895
+           c29.023,18.609,62.582,28.445,97.047,28.445c67.754,0,110.139-31.95,133.764-58.753c29.46-33.421,46.356-77.658,46.356-121.367
+           c0-1.826-0.028-3.67-0.084-5.508c11.623-8.757,21.63-19.355,29.773-31.536c1.237-1.85,1.103-4.295-0.33-5.998
+           C307.394,57.037,305.009,56.486,302.973,57.388z"/>
+         </g>
+         </svg>
+        </li>
+        <li class="w-12">
+         <svg class="w-12 h-12 fill-current text-site-primary" height="512pt" viewBox="0 0 512 512" width="512pt" xmlns="http://www.w3.org/2000/svg"><path d="m475.074219 0h-438.148438c-20.394531 0-36.925781 16.53125-36.925781 36.925781v438.148438c0 20.394531 16.53125 36.925781 36.925781 36.925781h438.148438c20.394531 0 36.925781-16.53125 36.925781-36.925781v-438.148438c0-20.394531-16.53125-36.925781-36.925781-36.925781zm-293.464844 387h-62.347656v-187.574219h62.347656zm-31.171875-213.1875h-.40625c-20.921875 0-34.453125-14.402344-34.453125-32.402344 0-18.40625 13.945313-32.410156 35.273437-32.410156 21.328126 0 34.453126 14.003906 34.859376 32.410156 0 18-13.53125 32.402344-35.273438 32.402344zm255.984375 213.1875h-62.339844v-100.347656c0-25.21875-9.027343-42.417969-31.585937-42.417969-17.222656 0-27.480469 11.601563-31.988282 22.800781-1.648437 4.007813-2.050781 9.609375-2.050781 15.214844v104.75h-62.34375s.816407-169.976562 0-187.574219h62.34375v26.558594c8.285157-12.78125 23.109375-30.960937 56.1875-30.960937 41.019531 0 71.777344 26.808593 71.777344 84.421874zm0 0"/></svg>
+        </li>
+        <li class="w-12">
+         <svg class="w-12 h-12 fill-current text-site-primary" height="512pt" viewBox="0 0 512 512" width="512pt" xmlns="http://www.w3.org/2000/svg"><path d="m301 256c0 24.851562-20.148438 45-45 45s-45-20.148438-45-45 20.148438-45 45-45 45 20.148438 45 45zm0 0"/><path d="m332 120h-152c-33.085938 0-60 26.914062-60 60v152c0 33.085938 26.914062 60 60 60h152c33.085938 0 60-26.914062 60-60v-152c0-33.085938-26.914062-60-60-60zm-76 211c-41.355469 0-75-33.644531-75-75s33.644531-75 75-75 75 33.644531 75 75-33.644531 75-75 75zm86-146c-8.285156 0-15-6.714844-15-15s6.714844-15 15-15 15 6.714844 15 15-6.714844 15-15 15zm0 0"/><path d="m377 0h-242c-74.4375 0-135 60.5625-135 135v242c0 74.4375 60.5625 135 135 135h242c74.4375 0 135-60.5625 135-135v-242c0-74.4375-60.5625-135-135-135zm45 332c0 49.625-40.375 90-90 90h-152c-49.625 0-90-40.375-90-90v-152c0-49.625 40.375-90 90-90h152c49.625 0 90 40.375 90 90zm0 0"/></svg>
+        </li>
+       </ul>
+      </div>
+     </div>
+    </div>
+   </section>
+  </main>
+{% endblock %}

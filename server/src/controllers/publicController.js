@@ -19,8 +19,8 @@ const getDetail = async(req, res, next) => {
  try {
   // Get productId parameter
   const { productId } = req.params;
+  console.log(req.params);
   const DETAIL_URL = `https://api.coingecko.com/api/v3/coins/${productId}?tickers=true&market_data=true&community_data=false&developer_data=true&sparkline=true`;
-  console.log(DETAIL_URL)
   const tickerData = await fetch(URL);
   const tickerResponse = await tickerData.json();
   const detailData = await fetch(DETAIL_URL);
@@ -32,7 +32,7 @@ const getDetail = async(req, res, next) => {
    },
   });
 
-  console.log('Received product from database:', JSON.stringify(product));
+  console.log('Received product from database:', JSON.stringify(product));+
 
   res.render('detail', {
 			tickerData: tickerResponse.slice(0, 30),

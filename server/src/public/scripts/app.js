@@ -1,11 +1,3 @@
-// let amount = parseInt(document.querySelector('.buyAmount').innerHTML);
-// console.log(typeof amount);
-
-// document.getElementById('buyOne').addEventListener('click', () => {
-// 	amount += 100;
-// 	document.querySelector('.buyAmount').innerHTML = amount;
-// });
-
 let price = 0;
 
 const buyClickHandler = (amount) => {
@@ -19,6 +11,26 @@ const resetPrice = (amount) => {
 	document.querySelector('.buyAmount').dataset.id = 0;
 	price = 0;
 };
+
+const handleSubmit = async (currentPrice) => {
+ const data = await fetch(`http://localhost:8080/api/orders`, {
+  method: 'POST',
+  headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+   date: Date.now(),
+   price: price,
+   order_value: price / currentPrice,
+   status: 'pending', 
+   UserId: 5
+  })
+ })
+ const response = await data.json();
+ console.log(response);
+ return false
+}
 
 
 gsap.set(".ticker", { y: 0 });

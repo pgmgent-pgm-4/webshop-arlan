@@ -48,16 +48,19 @@ const resetPrice = () => {
 const fillShoppingCartItems = () => {
  let shoppingCart = document.getElementById('shoppingCartList');
  let shoppingOrder = JSON.parse(localStorage.getItem('ShoppingCart'));
+ let shoppingCartTotalElem = document.getElementById('ShoppingCartTotal');
+ let shoppingCartTotal = 0;
  if (shoppingOrder && shoppingOrder.length) {
   let content = shoppingOrder.map(order => {
+   shoppingCartTotal += order.price;
    return `<li class="flex items-center py-2 border-b-2 border-gray-400">
    <div class="flex justify-between w-full items-center">
     <div class="flex items-center">
-     <div class="w-16 h-16">
+     <div class="w-8 flex items-center">
       <img src="${order.image}" alt="${order.id}"/>
      </div>
      <div>
-      <h3 class="font-bold text-xl">${capitalizeFirstLetter(order.name)}</h3>
+      <h3 class=" ml-2 text-l">${capitalizeFirstLetter(order.name.toLowerCase())}</h3>
      </div>
     </div>
     <div class="text-right pr-2">
@@ -68,6 +71,7 @@ const fillShoppingCartItems = () => {
   </li>`
   }).join('');
   shoppingCart.innerHTML = content;
+  shoppingCartTotalElem.innerHTML = `€${shoppingCartTotal}`;
  }
 }
 

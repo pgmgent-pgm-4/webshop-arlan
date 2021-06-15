@@ -70,6 +70,8 @@ router.delete('/categories/:categoryId', categoryController.deleteCategory);
 router.get('/products', productController.getProducts);
 router.get('/products/:productId', productController.getProductById);
 
+
+
 router.get('/favorites', favoriteController.getFavortes);
 router.get('/favorites/all/:favoriteId', favoriteController.getFavoriteById);
 router.get('/favorites/:userId', favoriteController.getFavoritesByUserId);

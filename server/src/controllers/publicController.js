@@ -25,6 +25,8 @@ const getDetail = async(req, res, next) => {
   const tickerResponse = await tickerData.json();
   const detailData = await fetch(DETAIL_URL);
   const detailResponse = await detailData.json();
+		const reviewsResponse = await fetch(`${BASE_URL}/productReviews/${productId}`);
+		const reviews = await reviewsResponse.json();
   // Get specific product from database
   const product = await database.Product.findAll({
    where: {
@@ -35,6 +37,7 @@ const getDetail = async(req, res, next) => {
   res.render('detail', {
 			tickerData: tickerResponse.slice(0, 30),
 			detailData: detailResponse,
+			reviewsData: reviews,
 		});
 	} catch (error) {
 		throw new Error(error, next);
@@ -52,7 +55,7 @@ const getProfile = async(req, res, next) => {
  res.render('profile', {
 		tickerData: tickerResponse.slice(0, 30),
   profileData: profile[0],
-  favoritesData: favorites
+  favoritesData: favorites,
  })
 }
 

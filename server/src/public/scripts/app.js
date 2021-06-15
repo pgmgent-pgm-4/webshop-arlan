@@ -1,8 +1,10 @@
 let price = 0;
 const loginModal = document.querySelector('.loginModal');
 const registerModal = document.querySelector('.registerModal');
-let shoppingCart = document.querySelector('.shoppingCart');
-let hamburgerMenu = document.querySelector('.hamburgerMenu');
+const alertModalTitle = document.getElementById('modal-title');
+const alertModalBody = document.getElementById('modal-body');
+const shoppingCart = document.querySelector('.shoppingCart');
+const hamburgerMenu = document.querySelector('.hamburgerMenu');
 
 const capitalizeFirstLetter = (string) => {
  return string.charAt(0).toUpperCase() + string.slice(1);
@@ -40,7 +42,7 @@ const openHamburger = document.querySelector('.openHamburger');
 const openHamburgerMenu = () => {
  openHamburger.style.display = 'none';
  closeHamburgerMenu.style.display = 'block';
-  hamburgerMenu.style.display = 'block';
+ hamburgerMenu.style.display = 'block';
 }
 
 const closeHamburger = () => {
@@ -107,7 +109,18 @@ const makeFavorite = async (ProductId) => {
    ProductId: ProductId,
   })
  });
-}
+ const data = await response.json();
+ alertModalTitle.innerHTML = `Adding ${capitalizeFirstLetter(ProductId.toLowerCase())} to favorites`;
+ alertModalBody.innerHTML = JSON.stringify(data);
+ toggleModal('modal');
+};
+
+const toggleModal = (modalID) => {
+ document.getElementById(modalID).classList.toggle("hidden");
+ document.getElementById(modalID + "-backdrop").classList.toggle("hidden");
+ document.getElementById(modalID).classList.toggle("flex");
+ document.getElementById(modalID + "-backdrop").classList.toggle("flex");
+};
 
 const pageReady = () => {
  if (localStorage.getItem('UserId')) {
@@ -164,7 +177,7 @@ const handleRegister = async () => {
 
 const handleSubmit = async (currentPrice, productName, productImage) => {
  const currentUser = Number(localStorage.getItem('UserId'));
- const data = await fetch(`http://localhost:8080/api/orders`, {
+ const response = await fetch(`http://localhost:8080/api/orders`, {
   method: 'POST',
   headers: {
    'Accept': 'application/json',
@@ -178,14 +191,17 @@ const handleSubmit = async (currentPrice, productName, productImage) => {
    UserId: currentUser
   })
  });
- const response = await data.json();
+ const data = await response.json();
  let existingEntries = JSON.parse(localStorage.getItem('ShoppingCart'));
  if (existingEntries == null) existingEntries = [];
- let entry = response;
+ let entry = data;
  entry.name = productName.toUpperCase();
  entry.image = productImage;
  existingEntries.push(entry);
  localStorage.setItem('ShoppingCart', JSON.stringify(existingEntries));
+ alertModalTitle.innerHTML = `Succesfully added ${capitalizeFirstLetter(productName.toLowerCase())} to shopping cart`;
+ alertModalBody.innerHTML = JSON.stringify(data);
+ toggleModal('modal');
  return false
 }
 

@@ -17,6 +17,7 @@
   </section>
   <section class="bg-site-bg overflow-hidden">
    <div class="container mx-auto pb-8 md:w-9/12">
+   <h2 class="mb-3 text-2xl font-bold">Favorite cryptocurrencies</h2>
     {% for data in favoritesData -%}
      <a href="/products/{{ data.ProductId | lower }}">
       <div class="flex py-4 flex-wrap items-center justify-between min-w-full bg-white text-gray-800 rounded-2xl mb-3 shadow-card">

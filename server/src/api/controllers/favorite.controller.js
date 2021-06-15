@@ -50,7 +50,7 @@ const getFavoritesByUserId = async (req, res, next) => {
    }
   });
 
-		// Favorite with orderId was not found.
+		// Favorite with userId was not found.
 		if (!favorites) {
 			throw new HTTPError(`Could not found the favorite with id ${userId}!`, 404);
 		}
@@ -69,10 +69,24 @@ const createFavorite = async (req, res, next) => {
 	try {
 		// Get body from response
 		const model = req.body;
-		// Create a post
-		const createdFavorite = await database.Favorite.create(model);
+
+  let checkIfFavoriteExists = await database.Favorite.findAll({
+   where: {
+    ProductId: model.ProductId,
+    UserId: model.UserId
+   }
+  });
+
+
+		// Create a favorite if not already in favorites
+		if (!checkIfFavoriteExists.length) {
+   const createdFavorite = await database.Favorite.create(model);
+   res.status(201).json(createdFavorite);
+  } else {
+   res.status(409).json(`${model.ProductId} is already in your favorites`);
+  }
 		// Send response
-		res.status(201).json(createdFavorite);
+		
 	} catch (error) {
 		handleHTTPError(error, next);
 	}

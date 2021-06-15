@@ -1,31 +1,38 @@
 <section>
-  <header class="bg-gradient-to-b from-site-secondary to-site-primary">
-    <nav>
-      <div class="container px-8 py-3 mx-auto md:flex md:justify-between md:items-center">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <img class="hero__image" src="media/logo.svg" alt=""/>
-            <a
-              class="text-2xl pl-4 font-bold text-white dark:text-white lg:text-4xl hover:text-gray-200 dark:hover:text-gray-300"
-              href="#">Arlan</a>
-          </div>
-          <!-- Mobile menu button -->
-          <div class="flex md:hidden">
-            <button
-              type="button"
-              class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none
-                focus:text-gray-600 dark:focus:text-gray-400"
-              aria-label="toggle menu">
-              <svg viewbox="0 0 24 24" class="w-6 h-6 fill-current">
-                <path
-                  fill-rule="evenodd"
-                  d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
-              </svg>
-            </button>
-          </div>
-        </div>
-        <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
-        <div class="items-center md:flex">
+ <header class="bg-gradient-to-b from-site-secondary to-site-primary">
+  <nav class="navigation">
+   <div class="container px-8 py-3 mx-auto md:flex md:justify-between md:items-center">
+    <div class="flex items-center justify-between">
+     <div class="flex items-center">
+      <img class="hero__image" src="media/logo.svg" alt=""/>
+      <a
+       class="text-2xl pl-4 font-bold text-white dark:text-white lg:text-4xl hover:text-gray-200 dark:hover:text-gray-300"
+       href="#">Arlan</a>
+     </div>
+     <div class="flex md:hidden">
+      <button
+       onclick="openHamburgerMenu()"
+       type="button"
+       class="text-white openHamburger dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none
+        focus:text-gray-600 dark:focus:text-gray-400"
+       aria-label="toggle menu">
+       <svg viewbox="0 0 24 24" class="w-6 h-6 fill-current">
+        <path
+         fill-rule="evenodd"
+         d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
+       </svg>
+      </button>
+     </div>
+     <div
+      onclick="closeHamburger()"
+      class="closeHamburger hidden absolute top-3 right-10 cursor-pointer flex-col items-center mt-4 mr-4 text-white text-sm
+       z-50">
+      <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+       <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+      </svg>
+     </div>
+    </div>
+    <div class="hamburgerMenu hidden items-center md:flex">
      <div class="flex flex-col md:flex-row md:mx-6">
       <a
        class="my-1 text-sm font-medium text-white dark:text-gray-200 hover:text-indigo-500 dark:hover:text-indigo-400 md:mx-4
@@ -82,7 +89,7 @@
        </svg>
       </a>
      </div>
-     <div class="shoppingCart hidden absolute z-10 bg-white h-96 w-96 top-0 right-5 rounded-2xl">
+     <div class="shoppingCart hidden z-10 absolute bg-white h-96 w-96 top-0 right-5 rounded-2xl">
       <div
        onclick="closeCart()"
        class="absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
@@ -92,82 +99,13 @@
       </div>
       <h2 class="text-site-primary text-center text-2xl font-bold my-4">Shopping Cart</h2>
       <form>
-       <ul class="w-11/12 m-auto h-56 overflow-y-scroll">
-        <li class="flex items-center py-2 border-b-2 border-gray-400">
-         <div class="flex justify-between w-full items-center">
-          <div class="flex items-center">
-           <div class="w-16 h-16 bg-black mr-2">
-            <img src="#" alt="COIN"/>
-           </div>
-           <div class="float-right">
-            <h3 class="font-bold text-xl">Bitcoin</h3>
-            <span>BTC</span>
-           </div>
-          </div>
-          <div>
-           <h4>€5000</h4>
-           <p>0.3BTC</p>
-          </div>
-         </div>
-        </li>
-        <li class="flex items-center py-2 border-b-2 border-gray-400">
-         <div class="flex justify-between w-full items-center">
-          <div class="flex items-center">
-           <div class="w-16 h-16 bg-black mr-2">
-            <img src="#" alt="COIN"/>
-           </div>
-           <div class="float-right">
-            <h3 class="font-bold text-xl">Bitcoin</h3>
-            <span>BTC</span>
-           </div>
-          </div>
-          <div>
-           <h4>€5000</h4>
-           <p>0.3BTC</p>
-          </div>
-         </div>
-        </li>
-        <li class="flex items-center py-2 border-b-2 border-gray-400">
-         <div class="flex justify-between w-full items-center">
-          <div class="flex items-center">
-           <div class="w-16 h-16 bg-black mr-2">
-            <img src="#" alt="COIN"/>
-           </div>
-           <div class="float-right">
-            <h3 class="font-bold text-xl">Bitcoin</h3>
-            <span>BTC</span>
-           </div>
-          </div>
-          <div>
-           <h4>€5000</h4>
-           <p>0.3BTC</p>
-          </div>
-         </div>
-        </li>
-        <li class="flex items-center py-2 border-b-2 border-gray-400">
-         <div class="flex justify-between w-full items-center">
-          <div class="flex items-center">
-           <div class="w-16 h-16 bg-black mr-2">
-            <img src="#" alt="COIN"/>
-           </div>
-           <div class="float-right">
-            <h3 class="font-bold text-xl">Bitcoin</h3>
-            <span>BTC</span>
-           </div>
-          </div>
-          <div>
-           <h4>€5000</h4>
-           <p>0.3BTC</p>
-          </div>
-         </div>
-        </li>
-       </ul>
+       <ul id="shoppingCartList" class="w-11/12 m-auto h-56 overflow-y-scroll"></ul>
        <div class="flex justify-between w-11/12 m-auto pt-2">
         <div>
          <h2 class="text-xl font-bold">Total:</h2>
         </div>
         <div>
-         <p class="text-xl font-bold">€20000</p>
+         <p id="ShoppingCartTotal" class="text-xl font-bold">0</p>
         </div>
        </div>
        <button
@@ -181,32 +119,34 @@
     </div>
    </div>
   </nav>
-    <div class="container px-6 pt-12 z-0 mx-auto">
-      <div class="items-center justify-between md:flex">
-        <div class="w-full md:w-6/12">
-          <div>
-            <h1 class="text-2xl font-extrabold text-white dark:text-white md:text-5xl">We are Arlan.</h1>
-            <p class="text-white text-lg my-4">Striving to make buying cryptocurrencies as simple as possible, we made Arlan. A platform where you can securely buy your crypto's with a set price so you don't have to worry about conversions and all the troubles that come with trading.</p>
-          </div>
+  <div class="container px-6 pt-12 z-0 mx-auto">
+   <div class="items-center justify-between md:flex">
+    <div class="w-full md:w-6/12">
+     <div>
+      <h1 class="text-2xl font-extrabold text-white dark:text-white md:text-5xl">We are Arlan.</h1>
+      <p class="text-white text-lg my-4">Striving to make buying cryptocurrencies as simple as possible, we made Arlan. A
+       platform where you can securely buy your crypto's with a set price so you don't have to worry about conversions and all
+       the troubles that come with trading.</p>
+     </div>
+    </div>
+    <div class="flex items-center justify-center w-full mt-6 md:mt-0 md:w-1/3">
+     <img class="w-full h-full max-w-2xl" src="media/headerImages/aboutHeaderImage.png" alt="arlan about image"></div>
+    </div>
+   </div>
+  </header>
+  <div class="ticker">
+   <div class="ticker__data flex">
+    {% for data in tickerData -%}
+     <ul class="ticker__data--item text-white">
+      <li class="data__item--content flex items-center">
+       <img class="w-6" src={{ data.image }}>
+        <span class="text-sm ml-3">{{ data.name }}</span>
+        <div class="flex ml-1">
+         <span class="text-sm ml-2 flex text-red-500 {{ 'text-green-500' if data.price_change_percentage_24h > 0 }}">{{ '▲' if data.price_change_percentage_24h > 0 else '▼' }}</span>
+         <span class="text-sm text-red-500 {{ 'text-green-500' if data.price_change_percentage_24h > 0 }}">{{ '+' if data.price_change_percentage_24h > 0 }}{{ data.price_change_percentage_24h | round(2) }}%</span>
         </div>
-        <div class="flex items-center justify-center w-full mt-6 md:mt-0 md:w-1/3">
-          <img class="w-full h-full max-w-2xl" src="media/headerImages/aboutHeaderImage.png" alt="arlan about image"></div>
-        </div>
-      </div>
-    </header>
-    <div class="ticker">
-      <div class="ticker__data flex">
-        {% for data in tickerData -%}
-          <ul class="ticker__data--item text-white">
-            <li class="data__item--content flex items-center">
-              <img class="w-6" src={{ data.image }}>
-                <span class="text-sm ml-3">{{ data.name }}</span>
-                <div class="flex ml-1">
-                  <span class="text-sm ml-2 flex text-red-500 {{ 'text-green-500' if data.price_change_percentage_24h > 0 }}">{{ '▲' if data.price_change_percentage_24h > 0 else '▼'}}</span>
-                  <span class="text-sm text-red-500 {{ 'text-green-500' if data.price_change_percentage_24h > 0 }}">{{ '+' if data.price_change_percentage_24h > 0 }}{{ data.price_change_percentage_24h | round(2) }}%</span>
-                </div>
-              </li>
-            </ul>
-          {%- endfor %}
-        </div>
-      </section>
+       </li>
+      </ul>
+     {%- endfor %}
+    </div>
+   </section>

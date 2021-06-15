@@ -1,41 +1,38 @@
 {% extends "base.njk" %}
 {% block content %}
  {% set detailData = { image: 'null', name: 'Profile', padding: '16' } %}
-  {% include "./partials/detailheader.njk" %}
-  <main>
-   <section class="bg-site-bg overflow-hidden py-8">
-   <div class="container bg-white p-6 md:w-9/12 m-auto rounded-2xl shadow-card mb-16">
-      <div class="container m-auto mb-12">
-        <div class="flex justify-center">
-          <div class="bg-yellow-200 w-40 h-40 rounded-full text-center items-center flex justify-center my-4">
-            <span class="text-gray-800 font-bold text-7xl ">{{ profileData[0].firstname | truncate(1, true, '') }}</span>
-          </div>
-        </div>
-        <h2 class="text-center text-3xl font-bold">{{ profileData[0].firstname }} {{ profileData[0].lastname }}</h2>
-      </div>
-      <div class="flex justify-between">
-        <div class="w-2/5">
-          <h2 class="text-3xl font-bold">Your favorite cryptocoins</h2>
-          <ul class="h-60 overflow-y-auto">
-            {% for coin in favoritesData %}
-              <li>
-                <h2 class="p-2 text-2xl">{{ coin.ProductId }}</h2>
-              </li>
-            {% endfor %}
-          </ul>
-          <a href="/overview" class="bg-site-primary text-xl text-white rounded-lg p-4 font-bold hover:bg-site-secondary">Find more cryptocoins</a>
-        </div>
-        <div class="w-2/5">
-          <h2 class="text-3xl font-bold">Profile information</h2>
-          <ul class="h-60 overflow-y-auto">
-            <li><p class="p-2 text-2xl">First name: {{ profileData[0].firstname }}</p></li>  
-            <li><p class="p-2 text-2xl">Last name: {{ profileData[0].lastname }}</p></li>  
-            <li><p class="p-2 text-2xl">Date of birth: {{ profileData[0].date_of_birth | truncate(10, true, '')}}</p></li>  
-          </ul>
-          <button class="bg-site-primary text-xl text-white rounded-lg p-4 font-bold hover:bg-site-secondary">Change profile info</button>
-        </div>
-      </div>
+ {% include "./partials/detailheader.njk" %}
+ <main>
+  <section class="bg-site-bg overflow-hidden py-8">
+   <div class="container bg-white p-6 md:w-9/12 m-auto rounded-2xl shadow-card mb-4">
+    <div class="flex flex-col items-center justify-center">
+     <div class="bg-yellow-200 w-40 h-40 rounded-full text-center items-center flex justify-center my-4">
+      <h2 class="text-gray-800 font-bold text-7xl ">{{ profileData.firstname | truncate(1, true, '') }}</h2>
+     </div>
+     <h2 class="text-center text-3xl font-bold">{{ profileData.firstname }}
+      {{ profileData.lastname }}</h2>
+     <p class="p-2 text-l">Date of birth: {{ profileData.date_of_birth | truncate(10, true, '') }}</p>
     </div>
-   </section>
-  </main>
+   </div>
+  </section>
+  <section class="bg-site-bg overflow-hidden">
+   <div class="container mx-auto pb-8 md:w-9/12">
+    {% for data in favoritesData -%}
+     <a href="/products/{{ data.ProductId | lower }}">
+      <div class="flex py-4 flex-wrap items-center justify-between min-w-full bg-white text-gray-800 rounded-2xl mb-3 shadow-card">
+       <div class="flex items-center pl-5">
+        <div class="flex content-center items-center">
+         <div>
+          <h3 class="block md:inline text-lg font-bold ml-3">{{ data.ProductId | capitalize }}</h3>
+          <h3 class="block md:inline text-sm ml-3 font-bold uppercase">{{ data.symbol }}</h3>
+         </div>
+        </div>
+       </div>
+       <img class="pr-5" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAatJREFUWEft1kFWwjAQBuA/qGu5gQfQItyAhWUrnkA8gdwAvIGcQDyBuCUuuIFAdS3ewH3F+EqhD0rTJJP2vSzIlpnJxzTNlMGxxRzz4ABSPRG9DjXfqzg5ugRYPS4opgiXM0waP5kbmMZvFckH+Z91iL8eGNqZGwuMAAzw5k1Wv18FTQD3ufGs8gB+PpV1Sg5qBX0I9FQtjhuGPipg2vFAF9wbZNXOBvnzIcButTD0oAG4102n74Na8zYEe6HvY5DJxA3GteixJ2sXtDqMx18AqgZlLULFAuGysf1y7IL8eQdgTxY7EFLFHXhtuEncBbU+RhDimlCVnsLYK8YXyVuc6lCwAHBGr07KnIJ7jewO+YEglbRN4l7SGBc6NAP31hMAqeHq3hly7S2L76HoYJ/aHgvN/G+Ev3X5PRRVceqm3vwtP3hcTe1yl+YsS1BlDljxDF7r6E/7UlFyTLSt+oux0E+RfIweKIoqBKXG6IOsUXoYMxAZpY8xBxmjzDA0kDbKHEMHKVE0jB1IiqJj7EF7KDtMMaAEBcjGgclIVN/UJtUKiD2AVE10rkP/4a+kJZOMraIAAAAASUVORK5CYII="/>
+      </div>
+     </a>
+    {%- endfor %}
+   </div>
+  </section>
+ </main>
 {% endblock %}

@@ -51,7 +51,7 @@ const getProfile = async(req, res, next) => {
  const favorites = await favoritesResponse.json();
  res.render('profile', {
 		tickerData: tickerResponse.slice(0, 30),
-  profileData: profile,
+  profileData: profile[0],
   favoritesData: favorites
  })
 }

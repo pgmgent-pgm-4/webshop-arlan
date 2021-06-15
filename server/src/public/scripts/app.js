@@ -2,6 +2,7 @@ let price = 0;
 const loginModal = document.querySelector('.loginModal');
 const registerModal = document.querySelector('.registerModal');
 let shoppingCart = document.querySelector('.shoppingCart');
+let hamburgerMenu = document.querySelector('.hamburgerMenu');
 
 const capitalizeFirstLetter = (string) => {
  return string.charAt(0).toUpperCase() + string.slice(1);
@@ -31,6 +32,21 @@ const openModal = () => {
 const closeLogin = () => {
  loginModal.style.display = 'none';
  registerModal.style.display = 'none';
+}
+
+const closeHamburgerMenu = document.querySelector('.closeHamburger');
+const openHamburger = document.querySelector('.openHamburger');
+
+const openHamburgerMenu = () => {
+ openHamburger.style.display = 'none';
+ closeHamburgerMenu.style.display = 'block';
+  hamburgerMenu.style.display = 'block';
+}
+
+const closeHamburger = () => {
+ openHamburger.style.display = 'block';
+ closeHamburgerMenu.style.display = 'none';
+ hamburgerMenu.style.display = 'none';
 }
 
 const buyClickHandler = (amount) => {

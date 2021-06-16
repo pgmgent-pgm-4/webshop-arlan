@@ -8,8 +8,7 @@ database.connect();
 
 const getReviews = (n = 50, userList, productList) => {
   const reviews = [];
-  console.log(userList);
-  for (let i = 0; i < n; i++) {
+  productList.forEach((item) => {
     let user = userList[Math.floor(Math.random() * userList.length)];
     let product = productList[Math.floor(Math.random() * productList.length)];
     reviews.push({
@@ -20,7 +19,7 @@ const getReviews = (n = 50, userList, productList) => {
      UserId: user.id,
      ProductId: product.id,
     });
-  }
+  });
   return reviews;
 };
 

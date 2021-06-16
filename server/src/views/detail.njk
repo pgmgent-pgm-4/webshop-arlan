@@ -23,7 +23,7 @@
         </p>
         </div>
       <div class="mt-8">
-        <div class="buyButtons flex flex-wrap justify-between mb-2 lg:mb-0 xl:mb-2">
+        <div class="buyButtons flex flex-wrap justify-between mb-2 lg:mb-0">
           <button onclick="buyClickHandler(10)" class="sm:w-1/5 lg:w-2/5 lg:mb-2 buyButton 2xl:w-1/5 bg-site-primary text-white px-1 py-2 text-center text-xl rounded-xl block hover:bg-site-secondary">€+10</button>
           <button onclick="buyClickHandler(100)" class="sm:w-1/5 lg:w-2/5 lg:mb-2 buyButton 2xl:w-1/5 bg-site-primary text-white px-1 py-2 text-center text-xl rounded-xl block hover:bg-site-secondary">€+100</button>
           <button onclick="buyClickHandler(500)" class="sm:w-1/5 lg:w-2/5 lg:mb-2 buyButton 2xl:w-1/5 bg-site-primary text-white px-1 py-2 text-center text-xl rounded-xl block hover:bg-site-secondary">€+500</button>
@@ -39,6 +39,21 @@
      </div>
     </div>
    </section>
+   {% if reviewsData[0].message !== undefined %}
+    <section class="bg-site-bg py-14">
+      <h2 class="text-xl w-full text-left md:text-center md:text-3xl lg:text-4xl font-bold pt-8 pb-2">Reviews</h2>
+      <div class="container m-auto py-10">
+        <ul class="flex overflow-x-scroll pb-8">
+          {% for review in reviewsData %}
+            <li class="bg-white p-4 text-gray-800 w-96 mr-12 rounded-2xl mb-3 shadow-card">
+              <h2 class="font-bold text-2xl p-4 pl-0 ">{{ review.rating }}/10</h2>
+              <p class="text-lg">{{review.message}}</p>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </section>
+   {% endif %}
    <section class="bg-site-bg overflow-hidden py-8">
     <h2 class="text-xl  w-full text-left md:text-center md:text-3xl lg:text-4xl font-bold pt-8 pb-2">More Cryptocurrencies like {{ detailData.name }}</h2>
     <div class="container mx-auto flex flex-wrap py-10">

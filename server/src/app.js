@@ -14,6 +14,7 @@ Custom modules
 import { EnvironmentVariables } from './config';
 import { morganMiddleware, swaggerSpec, passport } from './middleware';
 import apiRoutes from './api/routes';
+import publicRoutes from './routes'
 
 /*
 Database
@@ -36,7 +37,7 @@ nunjucks.configure(path.join(__dirname, 'views'), {
 	noCache: true,
 	watch: true,
 });
-app.set('view engine', 'html');
+app.set('view engine', 'njk');
 
 /*
 bodyParser
@@ -64,11 +65,29 @@ https://www.npmjs.com/package/morgan
 if (EnvironmentVariables.NODE_ENV === 'development') {
 	app.use(morganMiddleware);
 }
-
 /*
 API Routes
 */
 app.use('/api', cors(), apiRoutes);
+
+/*
+View Engine
+*/
+nunjucks.configure(path.join(__dirname, 'views'), {
+	autoescape: true,
+	express: app,
+	noCache: true,
+	watch: true,
+});
+app.set('view engine', 'njk');
+
+app.use(express.static(__dirname + '/public'));
+
+/*
+Public Routes
+*/
+app.use('/', cors(), publicRoutes);
+
 
 /*
 Swagger

@@ -11,7 +11,7 @@ export default (sequelize) => {
 		{
 			name: DataTypes.STRING,
 			category_id: {
-				type: DataTypes.UUIDV4,
+				type: DataTypes.UUID,
 				defaultValue: DataTypes.UUIDV4,
 				allowNull: false,
 			},

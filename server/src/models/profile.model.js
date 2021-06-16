@@ -9,10 +9,6 @@ export default (sequelize) => {
 
 	Profile.init(
 		{
-			user_id: {
-				type: DataTypes.UUIDV4,
-				allowNull: false
-			},
 			firstname: {
 				type: DataTypes.TEXT
 			},

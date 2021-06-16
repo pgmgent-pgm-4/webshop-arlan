@@ -1,0 +1,50 @@
+{
+ "components": {
+	 "schemas": {
+		 "orders": {
+			 "properties": {
+				 "id": {
+					 "type": "integer",
+					 "description": "Order ID",
+					 "example": "1"
+				 },
+				 "date": {
+					 "type": "text",
+					 "description": "Order date",
+					 "example": "2021-06-14 10:10:09.983 +00:00"
+				 },
+				 "price": {
+					 "type": "integer",
+					 "description": "Total price of placed order",
+					 "example": "1234"
+				 },
+				 "order_value": {
+					 "type": "integer",
+					 "description": "Total amount of products of placed order",
+					 "example": "123"
+				 },
+				 "status": {
+					 "type": "text",
+					 "description": "Status of order",
+					 "example": "pending"
+				 },
+				 "createdAt": {
+					 "type": "text",
+					 "description": "Order creation date",
+					 "example": "2021-06-14 10:10:09.983 +00:00"
+				 },
+				 "updatedAt": {
+					 "type": "text",
+					 "description": "Order update date",
+					 "example": "2021-06-14 10:10:09.983 +00:00"
+				 },
+				 "UserId": {
+					 "type": "integer",
+					 "description": "ID of the user who placed the order",
+					 "example": "1"
+				 }
+			 }
+		 }
+	 }
+ }
+}

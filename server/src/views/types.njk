@@ -1,0 +1,58 @@
+{% extends "base.njk" %}
+{% block content %}
+ {% set detailData = { image: 'null', name: 'Cryptocurrnecy categories', padding: '16' } %}
+  {% include "./partials/loginModal.njk" %}
+  {% include "./partials/registerModal.njk" %}
+  {% include "./partials/detailheader.njk" %}
+  <main>
+   <section class="bg-site-bg overflow-hidden py-8">
+    <div class="container md:w-9/12 m-auto">
+     <h2 class="text-center text-2xl font-bold pb-8 md:text-4xl lg:text-5xl">Types of cryptocurrencies</h2>
+     <p class="text-center text-lg m-auto pb-4 leading-10 md:w-8/12 lg:w-6/12">A beginner's guid to cryptocurrencies and the categories we use on our site to differentiate between the different types.</p>
+     <div class="bg-white p-6 rounded-2xl shadow-card mb-16">
+      <h1 class="text-lg font-bold pb-4">Payment Cryptocurrency</h1>
+      <p class="pb-4">Payment cryptocurrencies can be thought of as digital monies operated by a distributed network of computers running a shared blockchain software. Some focus on trying to compete with fiat money, while others focus on payments for a specific use case or industry.</p>
+      <p class="pb-4">Cryptocurrency networks aiming to disrupt payments do not typically have many features aside from those necessary to define, transfer, record and secure transactions on the network.</p>
+      <p class="pb-4">Some might consider Bitcoin, the original cryptocurrency, as a good example of a payment cryptocurrency, as it was designed as an alternative to traditional fiat currencies.</p>
+      <p class="pb-4">The majority of other payment cryptocurrencies available seek to improve upon Bitcoin in various ways, from scalability to speed.</p>
+      <p class="pb-4">Asset-backed cryptocurrencies can also be classified as payment cryptocurrencies.</p>
+      <p class="pb-4">These crypto assets are generally pegged to more traditional assets and offer the efficiency and transparency benefits of cryptocurrency while providing price exposure to more established forms of value.</p>
+      <div class="pt-8">
+       <a href="#" class="m-auto px-8 text-white p-2 rounded-lg bg-site-primary">Browse Payment Cryptocurrencies</a>
+      </div>
+     </div>
+
+     <div class="bg-white p-6 rounded-2xl shadow-card mb-16">
+      <h1 class="text-lg font-bold pb-4">Infrastructure Cryptocurrencies</h1>
+      <p class="pb-4">Infrastructure cryptocurrencies are typically used to pay the computers responsible for running programs on a shared blockchain software network.</p>
+      <p class="pb-4">For example, the crypto asset that powers Ethereum is called ether, and it may be considered an infrastructure cryptocurrency, as people must purchase it in order to create and use decentralized applications running on the network.</p>
+      <p class="pb-4">There are many blockchain platforms that provide different use cases, and each of them requires their own infrastructure cryptocurrency.</p>
+      <p class="pb-4">Tokens focused on interoperability can also be categorized as infrastructure cryptocurrencies. Their goal is to provide a way to link multiple blockchains together and allow users to transact across these networks.</p>
+      <div class="pt-8">
+       <a href="#" class="m-auto px-8 text-white p-2 rounded-lg bg-site-primary">Browse Infrastructure Cryptocurrencies</a>
+      </div>
+     </div>
+
+     <div class="bg-white p-6 rounded-2xl shadow-card mb-16">
+      <h1 class="text-lg font-bold pb-4">Financial Cryptocurrencies</h1>
+      <p class="pb-4">Service cryptocurrencies might offer tools for managing personal or enterprise data on the blockchain. Their commonality lies in helping blockchain-based financial products access and vet external data sources.</p>
+      <p class="pb-4">Many service cryptocurrencies work to provide users with digital identities and link individual’s records from the real world to the blockchain.</p>
+      <p class="pb-4">There are many use cases for merging blockchain technology with real world applications. These can range from cryptocurrencies that provide various services for the healthcare industry (e.g., Dentacoin) to cryptocurrencies that offer file storage services (e.g., Storj, Siacoin).</p>
+      <div class="pt-8">
+       <a href="#" class="m-auto px-8 text-white p-2 rounded-lg bg-site-primary">Browse Financial Cryptocurrencies</a>
+      </div>
+     </div>
+
+     <div class="bg-white p-6 rounded-2xl shadow-card mb-16">
+      <h1 class="text-lg font-bold pb-4">Media & Entertainment Cryptocurrencies</h1>
+      <p class="pb-4">Much like the name suggests, media and entertainment cryptocurrencies seek to reward users for content, games, gambling or social media.</p>
+      <p class="pb-4">For example, a media and entertainment cryptocurrency like Basic Attention Token, aims to better distribute value in an equitable way to creators and consumers.</p>
+      <p class="pb-4">Lastly, media and entertainment cryptocurrencies are also used to power digital worlds accessed via virtual and augmented reality technologies.</p>
+      <div class="pt-8">
+       <a href="#" class="m-auto px-8 text-white p-2 rounded-lg bg-site-primary">Browse Media & Entertainment Cryptocurrencies</a>
+      </div>
+     </div>
+    </div>
+   </section>
+  </main>
+{% endblock %}

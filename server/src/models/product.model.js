@@ -5,14 +5,15 @@ export default (sequelize) => {
 		static associate(models) {
 			this.belongsToMany(models.Category, { through: 'product_has_categories' });
 			this.hasMany(models.Favorite);
-			
 		}
 	}
 
 	Product.init({
-		name: DataTypes.STRING,
-		product_id: DataTypes.UUIDV4,
-
+  id: {
+   type: DataTypes.TEXT,
+   primaryKey: true,
+   autoIncrement: false
+  }
 	}, {
 		sequelize,
 		modelName: 'Product',

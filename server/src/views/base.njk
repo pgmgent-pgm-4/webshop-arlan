@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <base href="../">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="icon" type="image/png" href="media/arlanlogo.png">
+  <title>Arlan</title>
+ </head>
+ <body onload="pageReady()">
+  <div
+   class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center
+    items-center"
+   id="modal">
+   <div
+    class="relative w-auto my-6 mx-auto max-w-3xl">
+    <!--content-->
+    <div
+     class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+     <!--header-->
+     <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+      <h3 id="modal-title" class="text-3xl font-semibold"></h3>
+      <button
+       class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold
+        outline-none focus:outline-none"
+       onclick="toggleModal('modal-id')">
+       <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+        ×
+       </span>
+      </button>
+     </div>
+     <!--body-->
+     <div class="relative p-6 flex-auto">
+      <p id="modal-body" class="my-4 break-all text-blueGray-500 text-lg leading-relaxed"></p>
+     </div>
+     <!--footer-->
+     <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+      <button
+       class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1
+        mb-1 ease-linear transition-all duration-150"
+       type="button"
+       onclick="toggleModal('modal')">
+       Close
+      </button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-backdrop"></div>
+  {% block content %}{% endblock %}
+  {% include "./partials/footer.njk" %}
+  <script src="https://kit.fontawesome.com/eefbba8f9b.js" crossorigin="anonymous"></script>
+  <script src="scripts/gsap/gsap.min.js" crossorigin="anonymous"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/chartjs.js" crossorigin="anonymous"></script>
+  <script>
+   if ((window.location.pathname).includes('products')) {
+    const days = [
+     'monday',
+     'tuesday',
+     'wednesday',
+     'thursday',
+     'friday',
+     'saturday',
+     'sunday'
+    ];
+    let goBackDays = 7;
+    let today = new Date();
+    let daysSorted = [];
+    for (let i = 0; i < goBackDays; i++) {
+     let newDate = new Date(today.setDate(today.getDate() - 1));
+     daysSorted.push(days[newDate.getDay()]);
+    }
+    let daysFlipped = daysSorted.reverse();
+    let ctx = document.getElementById('{{ detailData.id }}Chart').getContext('2d');
+    let data = [{{ detailData.market_data.sparkline_7d.price }}];
+    data = data.map(result => {
+     return result * 0.82;
+    });
+    var myChart = new Chart(ctx, {
+     type: 'line',
+     data: {
+      labels: daysFlipped,
+      datasets: [
+       {
+        data: data,
+        backgroundColor: ['rgba(2, 49, 145, 0.3)'],
+        borderColor: ['rgb(2, 49, 145)'],
+        borderWidth: 1,
+        fill: true,
+        tension: 0.5
+       }
+      ]
+     },
+     options: {
+      plugins: {
+       legend: {
+        display: false
+       }
+      },
+      scales: {
+       y: {
+        beginAtZero: false
+       }
+      }
+     }
+    });
+   }
+  </script>
+ </body>
+</html>

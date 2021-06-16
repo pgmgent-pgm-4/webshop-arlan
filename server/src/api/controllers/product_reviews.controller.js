@@ -24,14 +24,19 @@ const getProductReviewById = async (req, res, next) => {
 		// Get productReviewId parameter
 		const { productReviewId } = req.params;
 		// Get specific product review from database
-		const productReview = await database.Product_reviews.findByPk(productReviewId);
+		const productReview = await database.Product_reviews.findAll({
+			where: {
+				ProductId: productReviewId.toUpperCase(),
+			},
+		});
+		console.log(productReview);
 
 		// Order with orderId was not found.
 		if (!productReview) {
 			throw new HTTPError(`Could not found the order with id ${productReview}!`, 404);
 		}
 		// Send response
-		res.status(200).json(order);
+		res.status(200).json(productReview);
 	} catch (error) {
 		handleHTTPError(error, next);
 	}

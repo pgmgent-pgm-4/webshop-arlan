@@ -29,7 +29,7 @@ const isValidPassword = async (user, password) => {
 const LocalStrategy = passportLocal.Strategy;
 passport.use(
 	new LocalStrategy(
-		{ usernameField: 'username', passwordField: 'password' },
+		{ emailField: 'email', passwordField: 'password' },
 		async (username, password, done) => {
 			try {
 				// get user by username
@@ -77,8 +77,9 @@ const handleLogin = async (req, res) => {
 const handleRegister = async (req, res) => {
 	const { username, password, email } = parseUserRequest(req, res);
 	bcrypt.hash(password, Number(jwtOptions.jwtLifeTime)).then((hash) => {
-		database.User.create({ username: username, password: hash, email: email, });
-		res.status(200).send('You have succesfully been registered. You can now login.');
+		let user = database.User.create({ username: username, password: hash, email: email, });
+  console.log(user);
+		res.status(200).json({message: 'You have succesfully registered. You can now login.'});
 	});
 };
 

@@ -26,43 +26,9 @@ const router = express.Router();
 Routes
 */
 
-/**
- * @swagger
- * /api/categories:
- *   get:
- *     summary: Retrieve a list of categories
- *     description: Retrieve a list of categories. Can be used to populate a list of categories when prototyping or testing an API.*
- *     responses:
- *       200:
- *         description: A list of categories.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 data:
- *                   type: array
- *                   items:
- *                     type: object
- *                     properties:
- *                       id:
- *                         type: integer
- *                         description: The category ID.
- *                         example: 1
- *                       name:
- *                         type: string
- *                         description: The categories name.
- *                         example: Computers
- */
+
 router.get('/categories', categoryController.getCategories);
 router.get('/categories/:categoryId', categoryController.getCategoryById);
-/**
- * @swagger
- * /api/categories:
- *   post:
- *     summary: Create a new category
- *     description: Create a new category
- */
 router.post('/categories', categoryController.createCategory);
 router.put('/categories/:categoryId', categoryController.updateCategory);
 router.delete('/categories/:categoryId', categoryController.deleteCategory);
@@ -77,10 +43,204 @@ router.get('/favorites/all/:favoriteId', favoriteController.getFavoriteById);
 router.get('/favorites/:userId', favoriteController.getFavoritesByUserId);
 router.post('/favorites', favoriteController.createFavorite);
 
+
+/**
+ * @swagger
+ * /api/orders/:
+ *   get:
+ *     summary: Retrieve all orders
+ *     tags:
+ *       - orders
+ *     description: Retrieve an array of objects, each object containing an order
+ *     responses:
+ *       200:
+ *         description: A list of orders
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: integer
+ *                         description: The order id
+ *                         example: 1
+ *                       date:
+ *                         type: string
+ *                         description: ISO date
+ *                         example: 2021-06-14 10:10:09.983+00:00
+ *                       price:
+ *                         type: integer
+ *                         description: Order price
+ *                         example: 459
+ *                       order_value:
+ *                         type: integer
+ *                         description: Amount of products bought for the order
+ *                         example: 20
+ *                       status: 
+ *                         type: string
+ *                         description: Order status
+ *                         example: pending
+ *                       createdAt:
+ *                         type: text
+ *                         description: Order creation date
+ *                         example: 2021-06-14 10:10:09.983 +00:00
+ *                       updatedAt:
+ *                         type: text
+ *                         description: Order update date
+ *                         example: 2021-06-14 10:10:09.983 +00:00
+ *                       UserId:
+ *                         type: integer
+ *                         description: ID of the user who placed the order
+ *                         example: 1
+ */
 router.get('/orders', passport, orderController.getOrders);
+/**
+ * @swagger
+ * /api/orders/{orderId}:
+ *   get:
+ *     tags:
+ *       - orders
+ *     summary: Retrieve order by orderId
+ *     description: Retrieve a specific order by orderId
+ *     parameters:
+ *     - in: path
+ *       name: orderId
+ *       required: true
+ *       schema:
+ *        type: integer
+ *        minimum: 1
+ *       description: Order ID
+ *     responses:
+ *       200:
+ *         description: An order object
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: integer
+ *                         description: The order id
+ *                         example: 1
+ *                       date:
+ *                         type: string
+ *                         description: ISO date
+ *                         example: 2021-06-14 10:10:09.983+00:00
+ *                       price:
+ *                         type: integer
+ *                         description: Order price
+ *                         example: 459
+ *                       order_value:
+ *                         type: integer
+ *                         description: Amount of products bought for the order
+ *                         example: 20
+ *                       status: 
+ *                         type: string
+ *                         description: Order status
+ *                         example: pending
+ *                       createdAt:
+ *                         type: text
+ *                         description: Order creation date
+ *                         example: 2021-06-14 10:10:09.983 +00:00
+ *                       updatedAt:
+ *                         type: text
+ *                         description: Order update date
+ *                         example: 2021-06-14 10:10:09.983 +00:00
+ *                       UserId:
+ *                         type: integer
+ *                         description: ID of the user who placed the order
+ *                         example: 1
+ */
 router.get('/orders/:orderId', orderController.getOrderById);
+
+/**
+ * @swagger
+ * /api/orders/:
+ *   post:
+ *     tags:
+ *       - orders
+ *     summary: Create a new order
+ *     description: Create a new order using an object
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/definitions/Order'
+ *     responses:
+ *       201:
+ *        description: Succesful POST operation
+ *        schema:
+ *          $ref: '#/definitions/Order'
+ *       400:
+ *          description: Invalid order body
+ */
 router.post('/orders', orderController.createOrder);
+
+/**
+ * @swagger
+ * /api/orders/{orderId}:
+ *   put:
+ *     tags:
+ *       - orders
+ *     summary: Update an existing order
+ *     description: Update an existing order using an object
+ *     parameters:
+ *     - in: path
+ *       name: orderId
+ *       required: true
+ *       schema:
+ *        type: integer
+ *        minimum: 1
+ *       description: Order ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/definitions/Order'
+ *     responses:
+ *       201:
+ *        description: Succesful POST operation
+ *        schema:
+ *          $ref: '#/definitions/Order'
+ *       400:
+ *          description: Invalid order body
+ */
 router.put('/orders/:orderId', orderController.updateOrder);
+
+/**
+ * @swagger
+ * /api/orders/{orderId}:
+ *   delete:
+ *     tags:
+ *       - orders
+ *     summary: Delete an existing order
+ *     description: Delete an existing order using orderId
+ *     parameters:
+ *     - in: path
+ *       name: orderId
+ *       required: true
+ *       schema:
+ *        type: integer
+ *        minimum: 1
+ *       description: Order ID
+ *     responses:
+ *       201:
+ *        description: Succesful POST operation
+ *       400:
+ *          description: Invalid orderId
+ */
 router.delete('/orders/:orderId', orderController.deleteOrder);
 
 router.get('/users', userController.getUsers);
@@ -101,7 +261,79 @@ router.post('/payments', paymentController.createPayment);
 router.put('/payments', paymentController.updatePayment);
 router.delete('/payments', paymentController.deletePayment);
 
+
+/**
+ * @swagger
+ * /api/products/:
+ *   get:
+ *     summary: Retrieve all products
+ *     tags:
+ *       - products
+ *     description: Retrieve an array of objects, each object containing a product
+ *     responses:
+ *       200:
+ *         description: A list of products
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: string
+ *                         description: The product id
+ *                         example: BITCOIN
+ *                       createdAt:
+ *                         type: text
+ *                         description: Order creation date
+ *                         example: 2021-06-14 10:10:09.983 +00:00
+ *                       updatedAt:
+ *                         type: text
+ *                         description: Order update date
+ *                         example: 2021-06-14 10:10:09.983 +00:00
+ */
 router.get('/products', productController.getProducts);
+
+/**
+ * @swagger
+ * /api/products/{productId}:
+ *   get:
+ *     summary: Retrieve product by productId
+ *     tags:
+ *       - products
+ *     description: Retrieve an object containing a product by productId
+ *     parameters:
+ *     - in: path
+ *       name: productId
+ *       required: true
+ *       schema:
+ *        type: string
+ *        description: productId
+ *     responses:
+ *       200:
+ *         description: A specific product
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id: 
+ *                   type: string
+ *                   description: Product ID
+ *                   example: BITCOIN
+ *                 createdAt:
+ *                   type: text
+ *                   description: Order creation date
+ *                   example: 2021-06-14 10:10:09.983 +00:00
+ *                 updatedAt:
+ *                   type: text
+ *                   description: Order update date
+ *                   example: 2021-06-14 10:10:09.983 +00:00
+ */
 router.get('/products/:id', productController.getProductById);
 
 router.get('/productReviews', productReviewsController.getProductReviews);
@@ -114,3 +346,46 @@ router.post('/register', authenticationController.handleRegister);
 router.post('/login', authenticationController.handleLogin);
 
 export default router;
+
+/**
+ * @swagger
+ * definitions:
+ *   Order:
+ *     type: object
+ *     properties:
+ *       date:
+ *         type: string
+ *         enum:
+ *         - 2021-06-15 14:29:59.802 +00:00
+ *       price: 
+ *         type: integer
+ *         format: int32
+ *         minimum: 100
+ *       order_value:
+ *         type: integer
+ *         format: int32,
+ *         minimum: 0.1313
+ *       status:
+ *         type: string
+ *         enum:
+ *         - pending
+ *         - processing
+ *         - completed
+ *       UserId:
+ *         type: integer
+ *         format: int32
+ *         minimum: 1 
+ *         maximum: 10
+ *     xml:
+ *       name: Order
+ *   Product:
+ *     type: object
+ *     properties:
+ *       id:
+ *         type: string
+ *         enum:
+ *         - BITCOIN
+ *         - ETHEREUM
+ *         - LITECOIN
+ *         - WOMENCOIN
+ */

@@ -77,7 +77,8 @@ const handleLogin = async (req, res) => {
 const handleRegister = async (req, res) => {
 	const { username, password, email } = parseUserRequest(req, res);
 	bcrypt.hash(password, Number(jwtOptions.jwtLifeTime)).then((hash) => {
-		database.User.create({ username: username, password: hash, email: email, });
+		let user = database.User.create({ username: username, password: hash, email: email, });
+  console.log(user);
 		res.status(200).json({message: 'You have succesfully registered. You can now login.'});
 	});
 };

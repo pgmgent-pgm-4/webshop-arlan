@@ -1,0 +1,26 @@
+### Get all categories
+GET http://localhost:8080/api/categories HTTP/1.1
+
+### Get all categories paged
+GET http://localhost:8080/api/categories?itemsPerPage=3&currentPage=1 HTTP/1.1
+
+### Create a new category
+POST http://localhost:8080/api/categories HTTP/1.1
+content-type: application/json
+
+{
+    "name": "A new Category",
+    "description": "Just a nice description"
+}
+
+### Update an existing category
+PUT http://localhost:8080/api/categories/1 HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Another name 2",
+    "description": "Just a nice description"
+}
+
+### Delete an existing category by id
+DELETE http://localhost:8080/api/categories/9 HTTP/1.1

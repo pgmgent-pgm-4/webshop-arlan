@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="css/cookieconsent.css" media="screen">
+  <link rel="icon" type="image/png" href="media/arlanlogo.png">
+  <title>Arlan</title>
+ </head>
+ <body>
+ {% include "./partials/loginModal.njk" %}
+ {% include "./partials/registerModal.njk" %}
+  {% include "./partials/header.njk" %}
+  <main>
+   <section class="bg-site-bg overflow-hidden py-8">
+    <h2 class="text-xl w-full text-left md:text-center md:text-4xl lg:text-5xl font-bold py-8">Discover trending coins</h2>
+    <p class="hidden md:block text-center w-2/5 m-auto mb-10">We offer a wide range of coins you can buy on our site. Below
+     are some of the ones that have received the most attention from our customers.</p>
+     <div class="relative">
+        <div
+        id="cards__container"
+        class="overflow-auto mx-auto w-full flex sm:overflow-hidden py-10"
+        data-flickity='{ "cellAlign": "left", "contain": true }'>
+        {% for data in tickerData -%}
+        <a href="/products/{{data.id}}" class="flex flex-wrap min-w-18 bg-white text-gray-800 p-5 rounded-2xl shadow-card ml-5">
+        <div class="flex w-full justify-between items-center">
+            <div class="flex content-center">
+            <img src="{{ data.image }}" class="w-7"/>
+            <h3 class="text-lg font-bold ml-3">{{ data.name }}</h3>
+            </div>
+            <h3 class="text-sm font-bold uppercase">{{ data.symbol }}</h3>
+        </div>
+        <p class="w-full font-bold text-3xl pt-6">€{{ data.current_price | round(5) }}</p>
+        <p class="w-full text-sm text-red-500 {{ 'text-green-500' if data.price_change_percentage_24h > 0 }}">{{ '+' if data.price_change_percentage_24h > 0 }}{{ data.price_change_percentage_24h | round(2) }}% in the past 24 hours</p>
+        </a>
+        {%- endfor %}
+        <button id="slideBack" class="hidden sm:block absolute top-0 bottom-0 left-6 w-12 border-none">
+        <svg class="bg-white rounded-full rotate-180 fill-current text-site-primary" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" transform='rotate(180)' x="0px" y="0px"
+        viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+            <g>
+            <g>
+                <path d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z M335.083,271.083
+                L228.416,377.749c-4.16,4.16-9.621,6.251-15.083,6.251c-5.461,0-10.923-2.091-15.083-6.251c-8.341-8.341-8.341-21.824,0-30.165
+                L289.835,256l-91.584-91.584c-8.341-8.341-8.341-21.824,0-30.165s21.824-8.341,30.165,0l106.667,106.667
+                C343.424,249.259,343.424,262.741,335.083,271.083z"/>
+            </g>
+            </g>
+        </svg>
+        </button>
+        <button id="slideNext" class="hidden sm:block absolute top-0 bottom-0 right-6 w-12 border-none">
+          <svg class="bg-white rounded-full fill-current text-site-primary" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+            <g>
+              <g>
+                <path d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z M335.083,271.083
+                    L228.416,377.749c-4.16,4.16-9.621,6.251-15.083,6.251c-5.461,0-10.923-2.091-15.083-6.251c-8.341-8.341-8.341-21.824,0-30.165
+                    L289.835,256l-91.584-91.584c-8.341-8.341-8.341-21.824,0-30.165s21.824-8.341,30.165,0l106.667,106.667
+                    C343.424,249.259,343.424,262.741,335.083,271.083z"/>
+              </g>
+            </g>
+          </svg>
+        </button>
+        </div>
+    </div>
+   </section>
+   {% include "./partials/corevalues.njk" %}
+   <section class="bg-site-bg overflow-hidden py-8">
+    <h2 class="text-xl  w-full text-left md:text-center md:text-4xl lg:text-5xl font-bold py-8">Cryptocurrencies</h2>
+    <div class="container mx-auto flex flex-wrap py-10">
+     <div class="hidden md:flex w-full justify-between">
+      <p class="uppercase font-bold ml-3">name</p>
+      <div class="flex">
+       <p class="uppercase mr-14 font-bold">price</p>
+       <p class="uppercase mr-28 font-bold">change</p>
+      </div>
+     </div>
+     {% for data in tickerData.slice(0, 10) -%}
+     <a href="/products/{{ data.id }}">
+      <div class="flex flex-wrap items-center justify-between min-w-full bg-white text-gray-800 rounded-2xl mb-3 shadow-card">
+       <div class="flex items-center pl-5">
+        <div class="flex content-center items-center">
+          <div>
+            <img src="{{ data.image }}" class="w-7"/>
+          </div>
+          <div>
+            <h3 class="block md:inline text-lg font-bold ml-3">{{ data.name }}</h3>
+            <h3 class="block md:inline text-sm ml-3 font-bold uppercase">{{ data.symbol }}</h3>
+          </div>
+        </div>
+       </div>
+       <div class="flex items-center">
+        <div class="inline md:flex">
+         <p class="mr-0 md:mr-12 font-bold pr-5 md:pr-0 text-xl text-right">€{{ data.current_price | round(5) }}</p>
+         <p class="w-auto text-lg text-right md:w-20 pr-5 md:pr-0 md:text-xl md:mr-12 text-red-500 {{ 'text-green-500' if data.price_change_percentage_24h > 0 }}">{{ '+' if data.price_change_percentage_24h > 0 }}{{ data.price_change_percentage_24h | round(2) }}%</p>
+        </div>
+        <a href="/products/{{ data.id }}" class="hidden md:block md:bg-site-primary hover:bg-blue-700 text-white font-bold py-4 px-4 rounded-r-2xl">
+         Buy
+        </a>
+       </div>
+      </div>
+      </a>
+     {%- endfor %}
+    </div>
+   </section>
+  </main>
+  {% include "./partials/footer.njk" %}
+  <script src="https://kit.fontawesome.com/eefbba8f9b.js" crossorigin="anonymous"></script>
+  <script src="/scripts/gsap/gsap.min.js" crossorigin="anonymous"></script>
+  <script src="/scripts/chartjs.js" crossorigin="anonymous"></script>
+  <script src="/scripts/cookieconsent.js"></script>
+  <script src="/scripts/app.js"></script>
+  <script>
+   let cookieconsent = initCookieConsent();
+   cookieconsent.run({
+    autorun : true, 							
+    delay : 0,
+    current_lang : 'en',
+    theme_css : "./css/cookieconsent.css",		
+    autoclear_cookies : true,	
+    cookie_expiration : 365,    
+    gui_options : {
+        consent_modal : {
+            layout : 'cloud',
+            position : 'bottom',
+            transition : 'slide'
+        },
+        settings_modal : {
+            layout : 'box',
+            transition : 'slide'
+        }
+    },
+    
+    onAccept: function(){},
+    
+    languages : {
+        en : {	
+            consent_modal : {
+                title :  "🍪 Arlan uses cookies.",
+                description :  'Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only upon approval. <a aria-label="Cookie policy" class="cc-link" href="cookies">Read more</a>',
+                primary_btn: {
+                    text: 'Accept',
+                    role: 'accept_all'				//'accept_selected' or 'accept_all'
+                },
+                secondary_btn: {
+                    text : 'Settings',
+                    role : 'settings'				//'settings' or 'accept_necessary'
+                }
+            },
+            settings_modal : {
+                title : 'Cookie preferences',
+                save_settings_btn : "Save settings",
+                accept_all_btn : "Accept all",
+                cookie_table_headers : [
+                    {col1: "Name" }, 
+                    {col2: "Domain" }, 
+                    {col3: "Expiration" }, 
+                    {col4: "Description" }, 
+                    {col5: "Type" }
+                ],
+                blocks : [
+                    {
+                        title : "Cookie usage",
+                        description: 'We use cookies to ensure the basic functionalities of the website and to enhance your online experience. You can choose for each category to opt-in/out whenever you want.'
+                    },{
+                        title : "Strictly necessary cookies",
+                        description: 'These cookies are essential for the proper functioning of Arlan. Without these cookies, the website would not work properly.',
+                        toggle : {
+                            value : 'necessary_cookies',
+                            enabled : true,
+                            readonly: true
+                        }
+                    },{
+                        title : "Analytics cookies",
+                        description: 'These cookies ollect information about how you use the website, which pages you visited and which links you clicked on. All of the data is anonymized and cannot be used to identify you.',
+                        toggle : {
+                            value : 'analytics_cookies',
+                            enabled : false,
+                            readonly: false
+                        },
+                        cookie_table: [
+                            {
+                                col1: '_ga',
+                                col2: 'google.com',
+                                col3: '2 years',
+                                col4: 'description ...' ,
+                                col5: 'Permanent cookie'
+                            },
+                            {
+                                col1: '_gat',
+                                col2: 'google.com',
+                                col3: '1 minute',
+                                col4: 'description ...' ,
+                                col5: 'Permanent cookie'
+                            },
+                            {
+                                col1: '_gid',
+                                col2: 'google.com',
+                                col3: '1 day',
+                                col4: 'description ...' ,
+                                col5: 'Permanent cookie'
+                            }
+                        ]
+                    },{
+                        title : "More information",
+                        description: 'For any queries in relation to my policy on cookies and your choices, please <a class="cc-link" href="contact">contact us</a>.',
+                    }
+                ]
+            }
+        }
+    }
+   });
+   document.body.classList.toggle('c_darkmode');
+  </script>
+ </body>
+</html>
